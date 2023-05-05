@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+				<meta charset="UTF-8">
+		<meta name="description" content="Website for Students at Innovation Academy Fulton County Schools">
+		<meta name="author" content="Scott Kent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					
+		<link rel="stylesheet" href="css/jquery-ui.min.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.structure.min.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.theme.min.css"/>
+
+		<script type="text/javascript" src="js/jquery-3.6.3.min.js"></script>		
+		<script type="text/javascript" src="js/jquery-ui-1.12.1.fcsia/jquery-ui.min.js"></script>
+		<link rel="shortcut icon" href="../media/img/favicon.ico" type="image/x-icon"/>  
+		<link rel="stylesheet" href="css/site.css"/>
+		<title>IA :: Event Registration - 2.3 IT Flex Friday</title>
+	</head>
+
+	<body>
+		<section id="contentContainer">
+		<section id="header">
+	<div id="branding"><h1 id="brand">Innovation Academy</h1></div>
+	<div id="mainMenu">
+		<div class="top_right_menu">
+			<div><a href="index.php">Home</a></div>
+						<span class="top_right_menu_span" id="user_name">
+				Admin User			</span>
+			<span class="top_right_menu_span" id="log_out_link">
+				<a href="scripts/php/login.php?action=logout">Log Out</a>
+			</span>
+					</div>
+	</div>
+</section>
+
+				<h2>2.3 IT Flex Friday</h2>
+
+		<div class="event_type">Flex Friday</div>
+		<div class="date_display"><h4>Event Date and Time:  </h4>02/03/2023: (08:55 AM - 04:15 PM)</div>
+		
+		<div class="registration_display"><h4>Registration Window:  </h4>01/31/2023 08:00 am - 05/03/2023 01:00 pm</div>
+		<p class="description"><h4>Description: </h4>
+			IT pathway students attend school and sign up for IT related sessions!		</p>
+		<!-- Not clear. Hiding.
+        <div class="attendee_types"><h4>This event is for: </h4>
+		<br />
+<b>Warning</b>:  Undefined variable $tempStr in <b>D:\Git\ia_events\scripts\php\classes\events\event.php</b> on line <b>191</b><br />
+Engineering Majors | Engineering Minors | HC Majors | HC Minors | IT Majors | IT Minors		
+		</div>-->
+				        <p>Use the form below to register for this event. Be sure to sign up for a workshop in each session.</p>
+		    
+        <div class="register_menu">
+            <a class="register_link" href="event_pass.php?id=12">Your Pass</a>
+        
+        </div>
+        		<form id="Event_Register_Form_12" name="Event_Register_Form" class="Event_Registration" method="post" action="scripts/php/process/events.php?type=event&action=register&event_id=12">
+			<fieldset>
+				<legend>Register for this Event</legend>
+				<div class="add_items list" id="accordion">
+					 
+        <h3>
+            Tutoring Hour Students can visit a teacher or work quietly in the provided workspaces. (08:55 am - 09:55 am)        </h3>
+		<div id="list_item_18">
+            <ul class="workshop_items workshops_session">
+									<li class="workshop_list" id="workshop_list_item_336">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_336" value="336"  />.Test Make Up Center  (Dilworth, Virginia)  9/80</label>
+												<!--<a href="#" class="See_Details" id="See_Details_336">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_336">
+							
+							<div>Pathway ONLY students can sign up to take a test during the tutoring hour.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_345">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_345" value="345"  checked />Check In Late  (Kent, Scott)  110/200</label>
+												<!--<a href="#" class="See_Details" id="See_Details_345">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_345">
+							
+							<div>Select if you are going to check in late before morning session.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_262">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_262" value="262"  />Group Collaboration Study  (Kent, Scott)  100/400</label>
+												<!--<a href="#" class="See_Details" id="See_Details_262">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_262">
+							
+							<div>Work in Hangar to complete asynchronous assignments prior to the morning session.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_260">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_260" value="260"  />Independent/Quiet Study   (Taylor, Laura)  168/320</label>
+												<!--<a href="#" class="See_Details" id="See_Details_260">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_260">
+							
+							<div>Work independently in a quiet space.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_339">
+						<label><input  disabled  type="radio" name="Session_18" id="workshop_reg_radio_session_18_339" value="339"  />Mock ACT  (Weaver, Amanda)  52/40</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_339">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_339">
+							
+							<div>Mock ACT - must sign up ahead of time with Mrs. Weaver</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_264">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_264" value="264"  />Tutoring with a Teacher  (Abreu, Carolina)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_264">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_264">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_265">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_265" value="265"  />Tutoring with a Teacher  (Adkins, Adriana)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_265">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_265">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_266">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_266" value="266"  />Tutoring with a Teacher  (Barich, John)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_266">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_266">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_267">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_267" value="267"  />Tutoring with a Teacher  (Barrera, Sherry)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_267">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_267">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_268">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_268" value="268"  />Tutoring with a Teacher  (Bartholomew, Tucker)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_268">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_268">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_269">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_269" value="269"  />Tutoring with a Teacher  (Beasley, Selena)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_269">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_269">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_270">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_270" value="270"  />Tutoring with a Teacher  (Benslay, Heather)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_270">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_270">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_271">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_271" value="271"  />Tutoring with a Teacher  (Berkemeier, Ginny)  24/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_271">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_271">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_272">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_272" value="272"  />Tutoring with a Teacher  (Bray, Christopher)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_272">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_272">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_273">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_273" value="273"  />Tutoring with a Teacher  (Brown, Daniel)  5/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_273">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_273">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_274">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_274" value="274"  />Tutoring with a Teacher  (Buning , John )  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_274">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_274">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_275">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_275" value="275"  />Tutoring with a Teacher  (Clayton, Richard)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_275">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_275">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_276">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_276" value="276"  />Tutoring with a Teacher  (Collins, Jeremy)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_276">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_276">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_277">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_277" value="277"  />Tutoring with a Teacher  (Cramer, Erica)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_277">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_277">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_278">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_278" value="278"  />Tutoring with a Teacher  (Curry, Briana)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_278">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_278">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_279">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_279" value="279"  />Tutoring with a Teacher  (Custar, Ian)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_279">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_279">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_280">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_280" value="280"  />Tutoring with a Teacher  (Dabbs, Sandra)  5/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_280">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_280">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_281">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_281" value="281"  />Tutoring with a Teacher  (Dawes, Cara)  6/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_281">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_281">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_282">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_282" value="282"  />Tutoring with a Teacher  (Denato, Joseph)  18/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_282">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_282">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_283">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_283" value="283"  />Tutoring with a Teacher  (Dilworth, Virginia)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_283">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_283">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_284">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_284" value="284"  />Tutoring with a Teacher  (Ettzevoglou, Nathalie)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_284">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_284">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_285">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_285" value="285"  />Tutoring with a Teacher  (Fallon , Sean )  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_285">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_285">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_286">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_286" value="286"  />Tutoring with a Teacher  (Fallon, Stephanie)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_286">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_286">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_287">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_287" value="287"  />Tutoring with a Teacher  (Foran, Sharon)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_287">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_287">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_288">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_288" value="288"  />Tutoring with a Teacher  (Fouts, Jeremy)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_288">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_288">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_289">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_289" value="289"  />Tutoring with a Teacher  (Garth, Margaret)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_289">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_289">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_290">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_290" value="290"  />Tutoring with a Teacher  (Gingrich, Randy)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_290">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_290">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_291">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_291" value="291"  />Tutoring with a Teacher  (Gingrich, Theresa)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_291">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_291">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_292">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_292" value="292"  />Tutoring with a Teacher  (Harris, Cristal)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_292">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_292">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_293">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_293" value="293"  />Tutoring with a Teacher  (Hart, Caren)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_293">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_293">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_294">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_294" value="294"  />Tutoring with a Teacher  (Hartley, Thomas)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_294">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_294">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_295">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_295" value="295"  />Tutoring with a Teacher  (Hemphill, Shannon)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_295">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_295">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_296">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_296" value="296"  />Tutoring with a Teacher  (Heying, Elizabeth)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_296">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_296">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_297">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_297" value="297"  />Tutoring with a Teacher  (Hizny, Timothy)  11/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_297">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_297">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_298">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_298" value="298"  />Tutoring with a Teacher  (Holland, Anna)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_298">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_298">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_299">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_299" value="299"  />Tutoring with a Teacher  (Huntley, Daniel)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_299">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_299">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_300">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_300" value="300"  />Tutoring with a Teacher  (Jones, Erica)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_300">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_300">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_301">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_301" value="301"  />Tutoring with a Teacher  (Jones, Larry)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_301">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_301">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_302">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_302" value="302"  />Tutoring with a Teacher  (Kent, Scott)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_302">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_302">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_303">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_303" value="303"  />Tutoring with a Teacher  (Kuhn, Robert)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_303">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_303">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_304">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_304" value="304"  />Tutoring with a Teacher  (Lynch, Donald)  7/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_304">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_304">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_305">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_305" value="305"  />Tutoring with a Teacher  (Maloney, Kathleen)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_305">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_305">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_306">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_306" value="306"  />Tutoring with a Teacher  (Marbry, Kenny)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_306">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_306">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_307">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_307" value="307"  />Tutoring with a Teacher  (Marra, William)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_307">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_307">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_308">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_308" value="308"  />Tutoring with a Teacher  (Mccown, Robert)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_308">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_308">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_309">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_309" value="309"  />Tutoring with a Teacher  (Mcgillicuddy , Lawrence )  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_309">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_309">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_310">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_310" value="310"  />Tutoring with a Teacher  (Patel, Binita)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_310">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_310">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_311">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_311" value="311"  />Tutoring with a Teacher  (Pawlowski, Walter)  5/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_311">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_311">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_312">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_312" value="312"  />Tutoring with a Teacher  (Paxton, Kathryn)  5/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_312">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_312">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_313">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_313" value="313"  />Tutoring with a Teacher  (Pomerance, David)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_313">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_313">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_314">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_314" value="314"  />Tutoring with a Teacher  (Reid, Maren)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_314">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_314">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_315">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_315" value="315"  />Tutoring with a Teacher  (Reid, Robert)  10/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_315">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_315">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_316">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_316" value="316"  />Tutoring with a Teacher  (Restler, Dahlia)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_316">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_316">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_317">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_317" value="317"  />Tutoring with a Teacher  (Rice, Michelle)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_317">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_317">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_318">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_318" value="318"  />Tutoring with a Teacher  (Rosner, Meggin)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_318">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_318">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_319">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_319" value="319"  />Tutoring with a Teacher  (Ross, Tyler)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_319">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_319">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_320">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_320" value="320"  />Tutoring with a Teacher  (Scenna, Allison)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_320">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_320">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_321">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_321" value="321"  />Tutoring with a Teacher  (Scott, Elizabeth)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_321">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_321">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_322">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_322" value="322"  />Tutoring with a Teacher  (Seals, James)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_322">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_322">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_323">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_323" value="323"  />Tutoring with a Teacher  (Spoerer, Nicolas)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_323">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_323">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_324">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_324" value="324"  />Tutoring with a Teacher  (Taha, Dania)  6/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_324">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_324">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_325">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_325" value="325"  />Tutoring with a Teacher  (Taylor, Laura)  3/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_325">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_325">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_326">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_326" value="326"  />Tutoring with a Teacher  (Vaughn, Leanne)  10/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_326">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_326">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_327">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_327" value="327"  />Tutoring with a Teacher  (Velazquez, Deanna)  6/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_327">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_327">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_328">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_328" value="328"  />Tutoring with a Teacher  (Vu, Matthew)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_328">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_328">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_329">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_329" value="329"  />Tutoring with a Teacher  (Wallace, Bryan)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_329">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_329">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_330">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_330" value="330"  />Tutoring with a Teacher  (Weaver, Amanda)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_330">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_330">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_331">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_331" value="331"  />Tutoring with a Teacher  (Weigand, Patrick)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_331">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_331">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_332">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_332" value="332"  />Tutoring with a Teacher  (Whitlock, Pamela)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_332">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_332">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_333">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_333" value="333"  />Tutoring with a Teacher  (Widmann, Graham)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_333">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_333">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_334">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_334" value="334"  />Tutoring with a Teacher  (Willis, Kiara)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_334">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_334">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_335">
+						<label><input  type="radio" name="Session_18" id="workshop_reg_radio_session_18_335" value="335"  />Tutoring with a Teacher  (Zahirsky, Casie)  0/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_335">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_335">
+							
+							<div>Sign up to attend tutoring with a specific teacher.</div>
+						</div>
+					</li>
+							</ul>
+		</div>
+		 
+        <h3>
+            Morning Session Select a pathway session to attend. (10:00 am - 12:00 pm)        </h3>
+		<div id="list_item_19">
+            <ul class="workshop_items workshops_session">
+									<li class="workshop_list disabled" id="workshop_list_item_350">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_350" value="350"  />AP Research - Rylan  (Reid, Maren)  10/0</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_350">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_350">
+							
+							<div>Only invited students.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_255">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_255" value="255"  />Chat GPT   (Mcgillicuddy , Lawrence )  40/40</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_255">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_255">
+							
+							<div>This high school workshop will explore the pros, cons, controversies, and utility of ChatGPT and other AI tools. We will discuss the potential for academic dishonesty, as well as ethical issues surrounding the use of AI. Additionally, we will examine common and practical uses of ChatGPT, such as language generation and machine learning. We will also delve into the history of AI, tracing its development and impact on various industries. Finally, we will discuss the implications of AI for the future of work and education, considering the potential for automation and the impact on job markets. Overall, this workshop aims to provide a comprehensive understanding of the current state and future possibilities of AI technology.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_346">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_346" value="346"  />Check In Late  (Kent, Scott)  14/100</label>
+												<!--<a href="#" class="See_Details" id="See_Details_346">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_346">
+							
+							<div>If you are a NON-IT student and you are coming to campus for something later in the day, select this option.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_251">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_251" value="251"  />Circuit Design  (Patel, Binita)  28/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_251">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_251">
+							
+							<div>During this session, students will use a Cricut to design and create name tags that will be sent to hospitals to use for babies in the NICU.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_249">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_249" value="249"  />Coding Music for Mood   (Whitlock, Pamela)  30/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_249">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_249">
+							
+							<div>Explore the interaction between music & mood as it relates to mental health needs.  We will then create an IA playlist of songs for a calming room and for the fitness center.  We will be using EarSketch and python to create the songs so bring your computer.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_340">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_340" value="340"  />Core Plus  (Vaughn, Leanne)  9/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_340">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_340">
+							
+							<div>CORE PLUS is a Flex Friday session designed to support 9th graders in their Math and Biology courses. Students will work on content that is relevant to what they are learning in class, receive extra practice problems, have time to complete HW, and have the opportunity to work in a small group directed by a content teacher.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_254">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_254" value="254"  />Creating a Cyber Security Escape Room  (Taylor, Laura)  12/35</label>
+												<!--<a href="#" class="See_Details" id="See_Details_254">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_254">
+							
+							<div>Work with your partners to create a digital escape room that focuses on cybersecurity and/or coding topics.  This is an all day session choose this session in the afternoon as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_246">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_246" value="246"  />Cyber Security  (Dabbs, Sandra)  20/20</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_246">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_246">
+							
+							<div>Explore the field of cybersecurity through interactive cybersecurity challenges, lessons on the importance of strong passwords, and other best practices that will make your cybersecurity journey enjoyable!</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_248">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_248" value="248"  />Designing Interactive Space for Game Design   (Heying, Elizabeth)  30/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_248">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_248">
+							
+							<div>You will learn how to use real maps to determine information about a society or culture. Then use those discoveries to design a landscape/area for a video game with other students.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_343">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_343" value="343"  />DNA Club  (Kuhn, Robert)  6/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_343">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_343">
+							
+							<div>DNA Club members ONLY.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_228">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_228" value="228"  />Game Changer  (Bartholomew, Tucker)  31/32</label>
+												<!--<a href="#" class="See_Details" id="See_Details_228">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_228">
+							
+							<div>Design and playtest modified versions of existing board and card games.  <br />
+</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_229">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_229" value="229"  />Improving Trip  (Kent, Scott)  13/13</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_229">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_229">
+							
+							<div>Come Learn Git and GitHub with Mr. Kent at Improving.com. Improving developers give us the basics for this Version Control System. (Improving.com Office)</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_261">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_261" value="261"  />Independent/Quiet Study   (Taylor, Laura)  49/80</label>
+												<!--<a href="#" class="See_Details" id="See_Details_261">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_261">
+							
+							<div>Work independently in a quiet space. </div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_244">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_244" value="244"  />Introduction to Blender  (Lynch, Donald)  50/50</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_244">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_244">
+							
+							<div>swDSds</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_250">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_250" value="250"  />Microbits  (Widmann, Graham)  32/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_250">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_250">
+							
+							<div>Learn to do physical computing with a Microbit and then explore different coding projects.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_339">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_339" value="339"  />Mock ACT  (Weaver, Amanda)  51/40</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_339">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_339">
+							
+							<div>Mock ACT - must sign up ahead of time with Mrs. Weaver</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_348">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_348" value="348"  />MSA Quiz Bowl Practice   (Taha, Dania)  6/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_348">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_348">
+							
+							<div>Quiz Bowl Team Only</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_243">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_243" value="243"  />Perils of Technology  (Paxton, Kathryn)  19/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_243">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_243">
+							
+							<div>Using a short-story from Ray Bradbury to spring board a conversation about our growing dependence on technology within our lives and globally.  Using a design thinking approach, we will deep dive through the issues technology has posed on our world. If you sign up for this workshop, you will are committing to Morning AND Afternoon so please select this in the Afternoon session as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_256">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_256" value="256"  />Research Journal Club  (Maloney, Kathleen)  2/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_256">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_256">
+							
+							<div></div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_253">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_253" value="253"  />Resume Building  (Lundy, Jessica)  9/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_253">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_253">
+							
+							<div></div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_341">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_341" value="341"  />Robotics Practice  (Huntley, Daniel)  26/60</label>
+												<!--<a href="#" class="See_Details" id="See_Details_341">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_341">
+							
+							<div>Students in Robotics can sign up to practice!</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_349">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_349" value="349"  />Science Olympiad Training  (Taha, Dania)  5/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_349">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_349">
+							
+							<div>Science Olympia Team only!</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_242">
+						<label><input  disabled  type="radio" name="Session_19" id="workshop_reg_radio_session_19_242" value="242"  />So You Want to be a Podcaster?&#34;  (Curry, Briana)  20/20</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_242">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_242">
+							
+							<div>In this workshop, we&#39;ll walk you through each step of the podcast creation process, such as choosing a topic, show and episode format, audio recording and editing, and publishing. By the end of this full day workshop, you will have a podcast episode planned, recorded, and ready to publish to the new IA Podcast, which will be available on Apple Podcasts and Spotify! Make sure to bring your charged device to the session. If you choose this workshop, you are committing to Morning AND Afternoon so please select this in the Afternoon Session as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_338">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_338" value="338"  checked />Super Bio  (Berkemeier, Ginny)  12/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_338">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_338">
+							
+							<div>Non-IT Super bio students will report for Session 1 of Super Bio.<br />
+</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_353">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_353" value="353"  />Super Physics  (Seals, James)  1/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_353">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_353">
+							
+							<div>Super physics students only.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_337">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_337" value="337"  />Test Make Up Center  (Dilworth, Virginia)  31/100</label>
+												<!--<a href="#" class="See_Details" id="See_Details_337">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_337">
+							
+							<div>Non-pathway students sign up to make up a test. Please make sure you have communicated with your teacher ahead of time about making up a test.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_252">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_252" value="252"  />The Info clock – Jeff Fischer  (Whitlock, Pamela)  2/10</label>
+												<!--<a href="#" class="See_Details" id="See_Details_252">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_252">
+							
+							<div>Investigate the InfoClock and brainstorm ideas for a current version.  You will be working with our business partner, Jeff Fischer, to redesign the info clock.  He is encouraging students who have done one session with him to come back and begin coding new features.  However, the session is open to new students as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_245">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_245" value="245"  />TSA Competition   (Harris, Cristal)  11/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_245">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_245">
+							
+							<div>Technology Student Association (TSA) members! Get ready to compete the State Conference! Current competitors only.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_344">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_344" value="344"  />Veeranatyam: Indian Dance Club  (Lynch, Donald)  3/20</label>
+												<!--<a href="#" class="See_Details" id="See_Details_344">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_344">
+							
+							<div>Only Veeranatyam club members only.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_342">
+						<label><input  type="radio" name="Session_19" id="workshop_reg_radio_session_19_342" value="342"  />World Read Aloud Day  (Bongiorno, Martha)  43/62</label>
+												<!--<a href="#" class="See_Details" id="See_Details_342">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_342">
+							
+							<div>All student volunteers for the World Read Aloud Day celebration with Alpharetta Elementary School should attend this morning session to prepare for the event. This is only for people how previously signed up!</div>
+						</div>
+					</li>
+							</ul>
+		</div>
+		 
+        <h3>
+            Ted Talk Session Attend Ted Talk  (12:05 pm - 12:35 pm)        </h3>
+		<div id="list_item_20">
+            <ul class="workshop_items workshops_session">
+									<li class="workshop_list" id="workshop_list_item_346">
+						<label><input  type="radio" name="Session_20" id="workshop_reg_radio_session_20_346" value="346"  />Check In Late  (Kent, Scott)  8/100</label>
+												<!--<a href="#" class="See_Details" id="See_Details_346">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_346">
+							
+							<div>If you are a NON-IT student and you are coming to campus for something later in the day, select this option.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_347">
+						<label><input  type="radio" name="Session_20" id="workshop_reg_radio_session_20_347" value="347"  />Check Out Early  (Shiotelis, Bev)  98/150</label>
+												<!--<a href="#" class="See_Details" id="See_Details_347">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_347">
+							
+							<div>If you plan to leave prior to the end of the day, select this option.  If you choose Check Out Early, you must choose this for the remainder of your session times.  If you are checking out, you ARE NOT allowed to return to campus to take the bus home.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_261">
+						<label><input  disabled  type="radio" name="Session_20" id="workshop_reg_radio_session_20_261" value="261"  checked />Independent/Quiet Study   (Taylor, Laura)  80/80</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_261">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_261">
+							
+							<div>Work independently in a quiet space. </div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_258">
+						<label><input  disabled  type="radio" name="Session_20" id="workshop_reg_radio_session_20_258" value="258"  />Ted Talk  (Whitlock, Pamela)  400/400</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_258">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_258">
+							
+							<div>Join Tod Renner, a Senior Cyber Security Director at FTI Consulting.  </div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_263">
+						<label><input  type="radio" name="Session_20" id="workshop_reg_radio_session_20_263" value="263"  />World Read Aloud Day Volunteers  (Bongiorno, Martha)  49/62</label>
+												<!--<a href="#" class="See_Details" id="See_Details_263">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_263">
+							
+							<div>If you have signed up to be a WRAD volunteer, select this option. This is only for people how previously signed up!</div>
+						</div>
+					</li>
+							</ul>
+		</div>
+		 
+        <h3>
+            Midday Session  CTSO Meetings/Independent Work (12:35 pm - 01:00 pm)        </h3>
+		<div id="list_item_21">
+            <ul class="workshop_items workshops_session">
+									<li class="workshop_list" id="workshop_list_item_346">
+						<label><input  type="radio" name="Session_21" id="workshop_reg_radio_session_21_346" value="346"  />Check In Late  (Kent, Scott)  11/100</label>
+												<!--<a href="#" class="See_Details" id="See_Details_346">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_346">
+							
+							<div>If you are a NON-IT student and you are coming to campus for something later in the day, select this option.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_347">
+						<label><input  type="radio" name="Session_21" id="workshop_reg_radio_session_21_347" value="347"  />Check Out Early  (Shiotelis, Bev)  106/150</label>
+												<!--<a href="#" class="See_Details" id="See_Details_347">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_347">
+							
+							<div>If you plan to leave prior to the end of the day, select this option.  If you choose Check Out Early, you must choose this for the remainder of your session times.  If you are checking out, you ARE NOT allowed to return to campus to take the bus home.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_260">
+						<label><input  disabled  type="radio" name="Session_21" id="workshop_reg_radio_session_21_260" value="260"  />Independent/Quiet Study   (Taylor, Laura)  320/320</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_260">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_260">
+							
+							<div>Work independently in a quiet space.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_259">
+						<label><input  type="radio" name="Session_21" id="workshop_reg_radio_session_21_259" value="259"  checked />TSA Meeting  (Harris, Cristal)  105/150</label>
+												<!--<a href="#" class="See_Details" id="See_Details_259">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_259">
+							
+							<div>Students in TSA will remain in the auditorium after the Ted Talk for a meeting.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_263">
+						<label><input  type="radio" name="Session_21" id="workshop_reg_radio_session_21_263" value="263"  />World Read Aloud Day Volunteers  (Bongiorno, Martha)  55/62</label>
+												<!--<a href="#" class="See_Details" id="See_Details_263">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_263">
+							
+							<div>If you have signed up to be a WRAD volunteer, select this option. This is only for people how previously signed up!</div>
+						</div>
+					</li>
+							</ul>
+		</div>
+		 
+        <h3>
+            Afternoon Session  Select a pathway session to attend. (02:00 pm - 04:00 pm)        </h3>
+		<div id="list_item_22">
+            <ul class="workshop_items workshops_session">
+									<li class="workshop_list" id="workshop_list_item_255">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_255" value="255"  />Chat GPT   (Mcgillicuddy , Lawrence )  39/40</label>
+												<!--<a href="#" class="See_Details" id="See_Details_255">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_255">
+							
+							<div>This high school workshop will explore the pros, cons, controversies, and utility of ChatGPT and other AI tools. We will discuss the potential for academic dishonesty, as well as ethical issues surrounding the use of AI. Additionally, we will examine common and practical uses of ChatGPT, such as language generation and machine learning. We will also delve into the history of AI, tracing its development and impact on various industries. Finally, we will discuss the implications of AI for the future of work and education, considering the potential for automation and the impact on job markets. Overall, this workshop aims to provide a comprehensive understanding of the current state and future possibilities of AI technology.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_347">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_347" value="347"  />Check Out Early  (Shiotelis, Bev)  140/150</label>
+												<!--<a href="#" class="See_Details" id="See_Details_347">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_347">
+							
+							<div>If you plan to leave prior to the end of the day, select this option.  If you choose Check Out Early, you must choose this for the remainder of your session times.  If you are checking out, you ARE NOT allowed to return to campus to take the bus home.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_251">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_251" value="251"  checked />Circuit Design  (Patel, Binita)  22/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_251">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_251">
+							
+							<div>During this session, students will use a Cricut to design and create name tags that will be sent to hospitals to use for babies in the NICU.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_249">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_249" value="249"  />Coding Music for Mood   (Whitlock, Pamela)  30/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_249">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_249">
+							
+							<div>Explore the interaction between music & mood as it relates to mental health needs.  We will then create an IA playlist of songs for a calming room and for the fitness center.  We will be using EarSketch and python to create the songs so bring your computer.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_254">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_254" value="254"  />Creating a Cyber Security Escape Room  (Taylor, Laura)  12/35</label>
+												<!--<a href="#" class="See_Details" id="See_Details_254">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_254">
+							
+							<div>Work with your partners to create a digital escape room that focuses on cybersecurity and/or coding topics.  This is an all day session choose this session in the afternoon as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_247">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_247" value="247"  />Cyber Security  (Vaughn, Leanne)  21/20</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_247">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_247">
+							
+							<div>Explore the field of cybersecurity through interactive cybersecurity challenges, lessons on the importance of strong passwords, and other best practices that will make your cybersecurity journey enjoyable!</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_248">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_248" value="248"  />Designing Interactive Space for Game Design   (Heying, Elizabeth)  30/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_248">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_248">
+							
+							<div>You will learn how to use real maps to determine information about a society or culture. Then use those discoveries to design a landscape/area for a video game with other students.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_343">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_343" value="343"  />DNA Club  (Kuhn, Robert)  9/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_343">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_343">
+							
+							<div>DNA Club members ONLY.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_352">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_352" value="352"  />DND Club  (Gingrich, Randy)  11/60</label>
+												<!--<a href="#" class="See_Details" id="See_Details_352">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_352">
+							
+							<div>DND Members only.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_257">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_257" value="257"  />Event Promo: Intentional Graphic Design   (Holland, Anna)  14/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_257">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_257">
+							
+							<div>Utilize Adobe instruction/expertise (InDesign, Photoshop, etc.) and other digital design tools (Canva, etc.) to produce promotional material for school events and clubs. Promotional needs will be determined from submissions via a QR-code request form. Students design the request process as well as the promotional products.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_230">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_230" value="230"  />Flex Friday System Developing  (Kent, Scott)  20/20</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_230">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_230">
+							
+							<div> Join Mr. Kent to see the behind the scenes of the new Flex Friday Event System. This will be a chance to join the team of students that are going to help develop the site further.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_228">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_228" value="228"  />Game Changer  (Bartholomew, Tucker)  31/32</label>
+												<!--<a href="#" class="See_Details" id="See_Details_228">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_228">
+							
+							<div>Design and playtest modified versions of existing board and card games.  <br />
+</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_261">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_261" value="261"  />Independent/Quiet Study   (Taylor, Laura)  35/80</label>
+												<!--<a href="#" class="See_Details" id="See_Details_261">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_261">
+							
+							<div>Work independently in a quiet space. </div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_244">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_244" value="244"  />Introduction to Blender  (Lynch, Donald)  30/50</label>
+												<!--<a href="#" class="See_Details" id="See_Details_244">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_244">
+							
+							<div>swDSds</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_250">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_250" value="250"  />Microbits  (Widmann, Graham)  24/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_250">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_250">
+							
+							<div>Learn to do physical computing with a Microbit and then explore different coding projects.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_243">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_243" value="243"  />Perils of Technology  (Paxton, Kathryn)  22/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_243">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_243">
+							
+							<div>Using a short-story from Ray Bradbury to spring board a conversation about our growing dependence on technology within our lives and globally.  Using a design thinking approach, we will deep dive through the issues technology has posed on our world. If you sign up for this workshop, you will are committing to Morning AND Afternoon so please select this in the Afternoon session as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_231">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_231" value="231"  />Python Coding  (Restler, Dahlia)  32/30</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_231">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_231">
+							
+							<div>This session will cover the basics of the Python programming language. Students will begin building a text based game in python.  The session will be led by two current IA students<br />
+</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_253">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_253" value="253"  />Resume Building  (Lundy, Jessica)  9/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_253">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_253">
+							
+							<div></div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_341">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_341" value="341"  />Robotics Practice  (Huntley, Daniel)  26/60</label>
+												<!--<a href="#" class="See_Details" id="See_Details_341">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_341">
+							
+							<div>Students in Robotics can sign up to practice!</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_349">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_349" value="349"  />Science Olympiad Training  (Taha, Dania)  4/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_349">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_349">
+							
+							<div>Science Olympia Team only!</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_242">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_242" value="242"  />So You Want to be a Podcaster?&#34;  (Curry, Briana)  19/20</label>
+												<!--<a href="#" class="See_Details" id="See_Details_242">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_242">
+							
+							<div>In this workshop, we&#39;ll walk you through each step of the podcast creation process, such as choosing a topic, show and episode format, audio recording and editing, and publishing. By the end of this full day workshop, you will have a podcast episode planned, recorded, and ready to publish to the new IA Podcast, which will be available on Apple Podcasts and Spotify! Make sure to bring your charged device to the session. If you choose this workshop, you are committing to Morning AND Afternoon so please select this in the Afternoon Session as well.</div>
+						</div>
+					</li>
+									<li class="workshop_list disabled" id="workshop_list_item_351">
+						<label><input  disabled  type="radio" name="Session_22" id="workshop_reg_radio_session_22_351" value="351"  />Test with Mrs. Depa  (Taylor, Laura)  1/1</label>
+						 Full						<!--<a href="#" class="See_Details" id="See_Details_351">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_351">
+							
+							<div>Invitation Only</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_245">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_245" value="245"  />TSA Competition   (Harris, Cristal)  13/30</label>
+												<!--<a href="#" class="See_Details" id="See_Details_245">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_245">
+							
+							<div>Technology Student Association (TSA) members! Get ready to compete the State Conference! Current competitors only.</div>
+						</div>
+					</li>
+									<li class="workshop_list" id="workshop_list_item_344">
+						<label><input  type="radio" name="Session_22" id="workshop_reg_radio_session_22_344" value="344"  />Veeranatyam: Indian Dance Club  (Lynch, Donald)  8/20</label>
+												<!--<a href="#" class="See_Details" id="See_Details_344">Details</a> -->
+						<div class="ws_description" id="Workshop_Description_344">
+							
+							<div>Only Veeranatyam club members only.</div>
+						</div>
+					</li>
+							</ul>
+		</div>
+						</div>
+                <input type="hidden" name="Sessions" id="Sessions" value="18,19,20,21,22" />
+				<p><input class="Submit_Button" type="submit" value="Register" id="Event_Reg_12" /></p>
+			</fieldset>
+		</form>
+			<script>
+
+	$(document).ready(function(){
+        $('.Submit_Button').click(function() {
+            ('.Submit_Button').attr('disabled');
+        });
+        $('.Submit_Button').attr("disabled", true);
+		/*$('.ws_description').hide();
+		$('.See_Details').click(function(e) {
+			e.preventDefault();
+			// Get the id of the element. 
+			let id = $(this).attr('id');
+			let id_Parts = id.split("_");
+			let ws_id = id_Parts[2];
+			$('#Workshop_Description_' + ws_id).toggle();
+			if ($(this).text() == "Details") {
+				$(this).text("Hide");
+			}
+			else {
+				$(this).text("Details");
+			}
+		});*/
+        
+        $( function() {
+            $( "#accordion" ).accordion({
+                heightStyle: "content",
+                collapsible: true, 
+                active: false
+            });
+        });
+        
+        // Check if all sessions are selected. 
+        $(":radio").change(function() {
+        var names = {};
+        $(':radio').each(function() {
+            names[$(this).attr('name')] = true;
+        });
+        var count = 0;
+        $.each(names, function() { 
+            count++;
+        });
+        if ($(':radio:checked').length === count) {
+            $('.Submit_Button').attr("disabled", false);
+        }
+        }).change();
+        
+        
+    });
+     
+	</script>
+				
+			
+			
+		</section>
+		
+		
+
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,74 @@
+.student_list {
+  margin: 0;
+  padding: 0;
+}
+.student_header {
+  list-style: none;
+  border: solid 1px #666;
+  border-radius: 5px;
+  padding: .2em 1em;
+  margin: .5em;
+  text-align: left;
+}
+.student_header span.park_link {
+  display: block;
+  float: right;
+}
+.park_link {
+  margin: 0 1em;
+  float: right;
+}
+.odd {
+  background-color: #EEE !important;
+}
+.even {
+  background-color: #FFF;
+}
+.small_pic {
+  max-height: 300px;
+  max-width: 300px;
+}
+.big_pic {
+  max-height: 800px;  
+  max-width: 800px;
+}
+.student_details div span, .student_list div span {
+  float: left;
+  padding: 1em;
+  margin: .5em;
+  border: solid 1px #AAA;
+}
+.student_details div.info, .student_list div.info {
+ border: solid 1px #CCC;
+ maring: 0 1%;
+ padding: 1em;
+ column-count: 2;
+}
+.student_details div.info p {
+  break-inside: avoid;
+}
+.student_list li.approved {
+  border: solid 2px #00AA00;
+  background: url("../../media/images/icons/check.png") top left no-repeat;
+  background-size: 50px 60px;
+}
+.student_list li.denied {
+  border: solid 2px #AA0000;
+  background: url("../../media/images/icons/x.png") 5px 15px no-repeat;
+  background-size: 40px 40px;
+}
+li.approved.student_header h4, li.denied.student_header h4{
+  margin-left: 40px;
+  color: #00AA00;
+}
+li.denied.student_header h4 {
+  color: #AA0000;
+}
+.student_details div span.noFrills, .student_list div span.noFrills {
+  display: inline;
+  border: none;
+  clear: none;
+  width: auto;
+  float: none;
+}
+

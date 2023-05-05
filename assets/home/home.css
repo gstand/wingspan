@@ -1,0 +1,45 @@
+#adminLinks, #teacherLinks {
+    display: none;
+}
+.homeFloater {
+    width: fit-content;
+    height: calc(100vh - 3rem);
+}
+.bx--body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/login/background.jpg);
+    /* transition: background-image 0.5s ease-in-out; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    animation: slides 25s linear infinite;
+}
+
+@keyframes slides {
+    from {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/login/background.jpg);
+        background-size: cover;
+        background-position: center center;
+    }
+    33% {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bgs/2.png);
+        background-size: cover;
+        background-position: center center;
+    }
+    66% {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bgs/3.jpeg);
+        background-size: cover;
+        background-position: center center;
+    }
+    to {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bgs/4.jpeg);
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+@media (max-width: 66rem) {
+    .homeFloater {
+        width: 100vw;
+    }
+}

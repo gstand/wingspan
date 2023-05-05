@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/carbon.css">
+    <link rel="stylesheet" href="/assets/frame/common.css">
+    <script src="/assets/carbon.js"></script>
+    <script src="/assets/frame/common.js"></script>
+    <link rel="stylesheet" href="/assets/eventList/eventList.css">
+    <script src="/assets/eventList/eventList.js"></script>
+    <page-context>{
+        "userSession": {
+                "id": 2,
+                "userName": "AdminUser",
+                "firstName": "Admin",
+                "lastName": "User",
+                "accessLevel": 4,
+                "myIpAddress": "::1"
+            }, "myEventList": {
+                "allowAdd": true,
+                "events": [{
+                        "id": "11",
+                        "name": "1.27 Health Science Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "12",
+                        "name": "2.3 IT Flex Friday",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "13",
+                        "name": "2.10 ENG Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "22",
+                        "name": "Cultivate",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "14",
+                        "name": "3.3 ENG Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "15",
+                        "name": "3.10 Health Science Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "16",
+                        "name": "3.24 IT Raspberry Pi Day",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "27",
+                        "name": "IA Learning Playground",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "17",
+                        "name": "4.14 Health Science Flex Friday",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "20",
+                        "name": "4.21 IT Flex Friday",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "19",
+                        "name": "4.28 ENG Flex Friday",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    },
+                    {
+                        "id": "28",
+                        "name": "1x.28 Health Science Flex Friday",
+                        "title": "Flex Friday",
+                        "allowRegister": true,
+                        "allowEdit": true,
+                        "allowDelete": true
+                    }
+                ]
+            }
+        }
+    </page-context>
+</head>
+
+<body class="bx--body">
+    <common-header></common-header>
+    <div class="bx--content">
+        <div class="top">
+            <h1 style="display: inline-block;">Event List</h1>
+            <button class="bx--btn bx--btn--primary" type="button" id="createEvent">
+                Create event
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                    aria-hidden="true">
+                    <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="secondLevelContainer">
+        <div class="bx--data-table-container " data-table id="eventTable">
+            <table class="bx--data-table  bx--data-table--sort bx--skeleton">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="bx--table-sort" data-event="sort" title="Name">
+                                <span class="bx--table-header-label">Name</span>
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                    style="will-change: transform;"
+                                    xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16"
+                                    height="16" viewBox="0 0 16 16"
+                                    aria-hidden="true">
+                                    <path d="M12.3 9.3L8.5 13.1 8.5 1 7.5 1 7.5 13.1 3.7 9.3 3 10 8 15 13 10z"></path>
+                                </svg>
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                    style="will-change: transform;"
+                                    xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16" aria-hidden="true">
+                                    <path
+                                        d="M13.8 10.3L12 12.1 12 2 11 2 11 12.1 9.2 10.3 8.5 11 11.5 14 14.5 11zM4.5 2L1.5 5 2.2 5.7 4 3.9 4 14 5 14 5 3.9 6.8 5.7 7.5 5z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </th>
+                        <th>
+                            <button class="bx--table-sort" data-event="sort" title="Protocol">
+                                <span class="bx--table-header-label">Title</span>
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                    style="will-change: transform;"
+                                    xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon" width="16"
+                                    height="16" viewBox="0 0 16 16"
+                                    aria-hidden="true">
+                                    <path d="M12.3 9.3L8.5 13.1 8.5 1 7.5 1 7.5 13.1 3.7 9.3 3 10 8 15 13 10z"></path>
+                                </svg>
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                    style="will-change: transform;"
+                                    xmlns="http://www.w3.org/2000/svg" class="bx--table-sort__icon-unsorted" width="16"
+                                    height="16"
+                                    viewBox="0 0 16 16" aria-hidden="true">
+                                    <path
+                                        d="M13.8 10.3L12 12.1 12 2 11 2 11 12.1 9.2 10.3 8.5 11 11.5 14 14.5 11zM4.5 2L1.5 5 2.2 5.7 4 3.9 4 14 5 14 5 3.9 6.8 5.7 7.5 5z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </th>
+                        <th class="bx--table-column-menu" style="width: 3.5rem;">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="eventRowContainer">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

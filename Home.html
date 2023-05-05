@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/carbon.css">
+    <link rel="stylesheet" href="/assets/frame/common.css">
+    <script src="/assets/carbon.js"></script>
+    <script src="/assets/frame/common.js"></script>
+    <link rel="stylesheet" href="/assets/home/home.css">
+    <script src="/assets/home/home.js"></script>
+    <link rel="preload" href="/assets/login/background.jpg" as="image">
+    <link rel="preload" href="/assets/home/bgs/2.png" as="image">
+    <link rel="preload" href="/assets/home/bgs/3.jpeg" as="image">
+    <link rel="preload" href="/assets/home/bgs/4.jpeg" as="image">
+    <page-context>{
+        "userSession": {
+        "id": 2,
+        "userName": "AdminUser",
+        "firstName": "Admin",
+        "lastName": "User",
+        "accessLevel": 4,
+        "myIpAddress": "::1"
+        }
+        }</page-context>
+</head>
+
+<body class="bx--body">
+    <common-header></common-header>
+    <div class="bx--content homeFloater">
+        <h1>Home</h1>
+        <h3 id="home-greeting">Good , .</h3>
+        <div id="globalLinks" class="someSpacing">
+            <a href="/EventList.html">See your events</a>
+        </div>
+        <div id="teacherLinks" class="someSpacing">
+            <h4>Teacher Links</h4>
+            <a href="/EventOwner.html">Your events</a>
+        </div>
+        <div id="adminLinks" class="someSpacing">
+            <h4>Admin Links</h4>
+            <a href="/EventList.html">Event list</a>
+            <a href="/SeeUser.html">See user</a>
+            <a href="/AddUsers.html">Add users</a>
+        </div>
+    </div>
+</body>
+
+</html>
