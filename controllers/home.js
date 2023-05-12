@@ -1,13 +1,20 @@
-// window.addEventListener('load', () => {
-//     document.querySelector('.bx--body').setAttribute('bg-img', 1)
-//     setInterval(() => {
-//         if (document.querySelector('.bx--body').getAttribute('bg-img') == 4) {
-//             document.querySelector('.bx--body').setAttribute('bg-img', 1)
-//         } else {
-//             document.querySelector('.bx--body').setAttribute('bg-img', Number(document.querySelector('.bx--body').getAttribute('bg-img')) + 1)
-//         }
-//     }, 10000)
-// })
+window.addEventListener('load', () => {
+    const bgs = document.getElementsByClassName('bgImages')[0];
+    const bgImages = bgs.children;
+    setInterval(() => {
+        for (let i = 0; i < bgImages.length; i++) {
+            if (bgImages[i].classList.contains('show')) {
+                bgImages[i].classList.remove('show');
+                if (i + 1 < bgImages.length) {
+                    bgImages[i + 1].classList.add('show');
+                } else {
+                    bgImages[0].classList.add('show');
+                }
+                break;
+            }
+        }
+    }, 5000)
+})
 
 document.addEventListener('contextProvided', () => {
     if (context.userSession) {
