@@ -1,4 +1,4 @@
-import { ClassWatcher } from "../frame/modules.js";
+import { ClassWatcher } from "../../common/modules.js";
 
 let signupProgressComponent;
 let selectedTeacher;
