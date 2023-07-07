@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     const bgs = document.getElementsByClassName('bgImages')[0];
     const bgImages = bgs.children;
     setInterval(() => {
@@ -14,6 +14,9 @@ window.addEventListener('load', () => {
             }
         }
     }, 5000)
+    await getUserSession();
+    document.dispatchEvent(contextProvided);
+    document.getElementById('progress-bar').remove();
 })
 
 document.addEventListener('contextProvided', () => {
@@ -37,6 +40,7 @@ document.addEventListener('contextProvided', () => {
             document.getElementById('home-greeting').innerHTML = `Good evening, ${context.userSession.firstName}.`;
         }
     } else {
-        window.location.href = '/Login.html';
+        debugger;
+        window.location.href = 'Login.html?redirect=' + window.location.pathname;
     }
 })

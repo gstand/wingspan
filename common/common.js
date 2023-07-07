@@ -79,7 +79,7 @@ if (globalThis.devMode) {
             </div>`
             const devmodeModal = new DOMParser().parseFromString(devmodeModalHTML, 'text/html').body.firstChild;
             document.body.appendChild(devmodeModal);
-            const formatter = new JSONFormatter(context, 1, {"theme": document.querySelector(":root").getAttribute('theme') == 'g100' ? "dark" : "light"});
+            const formatter = new JSONFormatter(context, 1, { "theme": document.querySelector(":root").getAttribute('theme') == 'g100' ? "dark" : "light" });
             const contextString = syntaxHighlight(JSON.stringify(context, null, 2));
             document.getElementById('devModeContextRaw').innerHTML = contextString;
             document.getElementById('devModeJSONFormatter').appendChild(formatter.render());
@@ -183,13 +183,46 @@ const getCookie = (cname) => {
 
 const theme = getCookie('theme');
 const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-if (darkThemeMq.matches && theme === '' ) {
+if (darkThemeMq.matches && theme === '') {
     document.querySelector(':root').setAttribute('theme', 'g100');
 } else if (!darkThemeMq.matches && theme === '') {
     document.querySelector(':root').setAttribute('theme', 'white');
 } else if (theme !== '') {
     document.querySelector(':root').setAttribute('theme', theme);
 }
+
+const throwContextError = () => {
+    const notifHTML = `<div data-notification
+  class="bx--inline-notification bx--inline-notification--error"
+  role="alert">
+  <div class="bx--inline-notification__details">
+    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z"></path><path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path></svg>
+    <div class="bx--inline-notification__text-wrapper">
+      <p class="bx--inline-notification__title">Error</p>
+      <p class="bx--inline-notification__subtitle">There was an error fetching your current page data. This can be caused by a variety of issues; which may include network issues, authentication issues, or et cetera. Try reloading the page, signing out and signing back in, and if issues persist, contact us here. <!--TODO: actually add this form(?) or whatever it'll be--></p> 
+    </div>
+  </div>
+</div>`
+    const notif = new DOMParser().parseFromString(notifHTML, 'text/html').body.firstChild;
+    document.body.appendChild(notif);
+    document.getElementById('progress-bar').classList.add('error')
+}
+globalThis.throwContextError = throwContextError;
+
+const getUserSession = async () => {
+    const response = await fetch('//' + window.location.host + '/scripts/php/userSessionWS.php');
+    const json = await response.json();
+    if (response.status !== 200) {
+        if (json && json.code === 'unauthenticated') {
+            window.location.href = 'Login.html?redirect=' + window.location.pathname;
+        } else {
+            throwContextError();
+            throw new Error('HTTP error ' + response.status);
+        }
+    }
+    globalThis.context.userSession = json;
+}
+globalThis.getUserSession = getUserSession;
 
 document.addEventListener('contextProvided', () => {
     if (context.userSession) {
@@ -223,7 +256,8 @@ document.addEventListener('contextProvided', () => {
             }
         }
     } else {
-        window.location.href = '/Login.html';
+        debugger
+        window.location.href = 'Login.html?redirect=' + window.location.pathname;
     }
 })
 
