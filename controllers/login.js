@@ -15,6 +15,7 @@
 let loggingIn = false;
 CarbonComponents.HeaderNav.init();
 window.addEventListener('load', () => {
+    document.getElementById('progress-bar').remove();
     const theme = getCookie('theme');
     if (theme == 'g100') {
         document.getElementById('appearanceToggle').classList.remove("light");
