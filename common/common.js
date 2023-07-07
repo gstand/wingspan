@@ -110,6 +110,19 @@ CarbonComponents.watch();
 // document.body.prepend(progressBar);
 // });
 
+// const apiManifest = await (async () => {
+//     const response = await fetch('common/api_manifest.php', {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "application/x-www-form-urlencoded"
+//         },
+//         data: "user=" + encodeURIComponent(document.getElementById('username').value) + "&pass=" + encodeURIComponent(document.getElementById('password').value)
+//     });
+//     const data = await response.json();
+//     return data;
+// })() // fetch() can burn in hell 
+// globalThis.apiManifest = apiManifest;
+
 globalThis.context = {};
 
 globalThis.contextProvided = new Event('contextProvided', {
@@ -165,6 +178,16 @@ const getCookie = (cname) => {
         }
     }
     return "";
+}
+
+const theme = getCookie('theme');
+const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+if (darkThemeMq.matches && theme === '' ) {
+    document.querySelector(':root').setAttribute('theme', 'g100');
+} else if (!darkThemeMq.matches && theme === '') {
+    document.querySelector(':root').setAttribute('theme', 'white');
+} else if (theme !== '') {
+    document.querySelector(':root').setAttribute('theme', theme);
 }
 
 document.addEventListener('contextProvided', () => {
