@@ -1986,7 +1986,7 @@ input:-webkit-autofill:active{
 .leftPanelLogin {
   height: calc(100vh - 3rem);
   margin-top: 3rem;
-  background-color: var(--cds-ui-01, #ffffff);
+  background-color: var(--cds-ui-02, #ffffff);
   width: 20rem;
   padding: 1.5rem 1rem;
   /* overflow: hidden; */
@@ -1999,7 +1999,7 @@ input:-webkit-autofill:active{
 .loginPanelHeader p, .help {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: var(--cds-text-01, #5a6872);
+  color: var(--cds-text-02, #5a6872);
 }
 #loginSubtitle {
   display: none;
@@ -2094,7 +2094,7 @@ input:-webkit-autofill:active{
   background-attachment: fixed;
 }
 .loginContainer {
-  background-color: var(--cds-ui-01);
+  background-color: var(--cds-ui-02);
   /* height: calc(100vh - 3rem - 64px); */
   height: 20rem;
   width: 40rem;

@@ -101,14 +101,15 @@ if (globalThis.devMode) {
 CarbonComponents.settings.disableAutoInit = false;
 CarbonComponents.watch();
 
-// document.addEventListener('DOMContentLoaded', () => {
-// const progressBar = document.createElement('div');
-// progressBar.className = 'progress-bar';
-// const progressBarValue = document.createElement('div');
-// progressBarValue.className = 'progress-bar-value';
-// progressBar.appendChild(progressBarValue);
-// document.body.prepend(progressBar);
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.id = 'progress-bar';
+    const progressBarValue = document.createElement('div');
+    progressBarValue.className = 'progress-bar-value';
+    progressBar.appendChild(progressBarValue);
+    document.body.prepend(progressBar);
+});
 
 // const apiManifest = await (async () => {
 //     const response = await fetch('common/api_manifest.php', {
