@@ -4,6 +4,26 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="/themes/wingspan/common/favicon/apple-touch-icon.png?v=wingspan-favicon-01">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="/themes/wingspan/common/favicon/favicon-32x32.png?v=wingspan-favicon-01">
+    <link rel="icon" type="image/png" sizes="194x194"
+        href="/themes/wingspan/common/favicon/favicon-194x194.png?v=wingspan-favicon-01">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="/themes/wingspan/common/favicon/android-chrome-192x192.png?v=wingspan-favicon-01">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="/themes/wingspan/common/favicon/favicon-16x16.png?v=wingspan-favicon-01">
+    <link rel="manifest" href="/themes/wingspan/common/favicon/site.webmanifest?v=wingspan-favicon-01">
+    <link rel="mask-icon" href="/themes/wingspan/common/favicon/safari-pinned-tab.svg?v=wingspan-favicon-01"
+        color="#5bbad5">
+    <link rel="shortcut icon" href="/themes/wingspan/common/favicon/favicon.ico?v=wingspan-favicon-01">
+    <meta name="apple-mobile-web-app-title" content="Innovation Academy Events">
+    <meta name="application-name" content="Innovation Academy Events">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/themes/wingspan/common/favicon/browserconfig.xml?v=wingspan-favicon-01">
+    <meta name="theme-color" content="#ee7623">
+    <title>Home - Innovation Academy Events</title>
     <link rel="stylesheet" href="common/carbon.css">
     <link rel="stylesheet" href="common/common.css">
     <script src="common/carbon.js"></script>
@@ -16,16 +36,16 @@
     <common-header></common-header>
     <div class="bx--content">
         <div class="top">
-            <h1 id="titleName">Event Details - </h1>
+            <h1 id="titleName" class="bx--skeleton__text bx--skeleton__heading">Event Details - </h1>
             <h1 id="mobileTitle">Event Details</h1>
             <div data-content-switcher class="bx--content-switcher inlineSwitcher" role="tablist"
                 aria-label="Demo switch content">
                 <button class="bx--content-switcher-btn bx--content-switcher--selected"
-                    data-target="#detailsPanel" role="tab" aria-selected="true">
+                    data-target="#detailsPanel" role="tab" aria-selected="true" onclick="window.location.href = '#details'">
                     <span class=bx--content-switcher__label>Details</span>
                 </button>
                 <button class="bx--content-switcher-btn"
-                    data-target="#sessionsPanel" role="tab">
+                    data-target="#sessionsPanel" role="tab" onclick="window.location.href = '#sessions'">
                     <span class=bx--content-switcher__label>Sessions</span>
                 </button>
             </div>
@@ -53,19 +73,19 @@
             <div class="detailsTileContainer">
                 <div class="bx--tile">
                     <h2>Description</h2>
-                    <p id="eventDesc"></p>
+                    <p id="eventDesc" class="bx--skeleton__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
                 <div class="bx--tile">
                     <h2>Event Type</h2>
-                    <p id="eventType"></p>
+                    <p id="eventType" class="bx--skeleton__text">Lorem ipsum</p>
                 </div>
                 <div class="bx--tile">
                     <h2>Event Date</h2>
-                    <p id="eventDate"></p>
+                    <p id="eventDate" class="bx--skeleton__text">Lorem ipsum dolor</p>
                 </div>
                 <div class="bx--tile">
                     <h2>Registration Window</h2>
-                    <p id="eventRegWindow"></p>
+                    <p id="eventRegWindow" class="bx--skeleton__text">Lorem ipsum dolor sit amet</p>
                 </div>
             </div>
         </div>
@@ -114,11 +134,11 @@
                         </button>
                     </div>
                 </section>
-                <table class="bx--data-table  bx--data-table--sort  ">
+                <table class="bx--data-table  bx--data-table--sort bx--skeleton">
                     <thead>
                         <tr>
                             <th class="bx--table-expand" data-event="expandAll">
-                                <span class="bx--table-header-label"></span>
+                                <span class="bx--table-header-label event-table-hotfix"></span>
                             </th>
                             <th>
                                 <button class="bx--table-sort" data-event="sort" title="Name">
@@ -191,7 +211,20 @@
                         </tr>
                     </thead>
                     <tbody id="rowTarget">
-                        
+                        <tr>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                        </tr>
+                        <tr>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
