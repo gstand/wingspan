@@ -1,16 +1,50 @@
+window.addEventListener('load', async () => {
+    await getUserSession();
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('id');
+    if (!eventId) {
+        throwContextError("No event ID provided in URL.");
+        throw new Error('No event ID provided');
+    }
+    if (window.location.hash === '#sessions') {
+        document.getElementById('sessionsButton').click();
+    }
+    const response = await fetch('//' + window.location.host + '/scripts/php/eventWs.php?id=' + eventId);
+    const json = await response.json();
+    if (response.status !== 200) {
+        if (json && json.code === 'unauthenticated') {
+            window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
+        } else {
+            throwContextError();
+            throw new Error('HTTP error ' + response.status);
+        }
+    }
+    globalThis.context.myEvent = json;
+    document.dispatchEvent(contextProvided);
+    document.getElementById('progress-bar').remove();
+})
+
 document.addEventListener('contextProvided', () => {
     document.getElementById('titleName').innerHTML = "Event Details - " + context.myEvent.name;
+    document.querySelector('title').innerHTML = "Event Details - " + context.myEvent.name + " - Innovation Academy Events";
+    document.getElementById('titleName').classList.remove('bx--skeleton__text');
+    document.getElementById('titleName').classList.remove('bx--skeleton__heading');
     document.getElementById('eventDesc').innerHTML = context.myEvent.event_description;
+    document.getElementById('eventDesc').classList.remove('bx--skeleton__text');
     document.getElementById('eventType').innerHTML = context.myEvent.ev_type + ' - ' + context.myEvent.ev_type_description;
-    const eventStart = new Date(context.myEvent.start_time);
-    const eventEnd = new Date(context.myEvent.end_time);
-    const eventTimeString = eventStart.toLocaleDateString() + ' (' + eventStart.toLocaleTimeString() + ' - ' + eventEnd.toLocaleTimeString() + ')';
+    document.getElementById('eventType').classList.remove('bx--skeleton__text');
+    const eventDate = new Date(Date.parse(context.myEvent.e_date) + 14400000);
+    const eventStart = new Date(Date.parse(context.myEvent.start_time) + 14400000);
+    const eventEnd = new Date(Date.parse(context.myEvent.end_time) + 14400000);
+    const eventTimeString = eventDate.toLocaleDateString() + ' (' + eventStart.toLocaleTimeString() + ' - ' + eventEnd.toLocaleTimeString() + ')';
     document.getElementById('eventDate').innerHTML = eventTimeString;
+    document.getElementById('eventDate').classList.remove('bx--skeleton__text');
     const eventRegOpen = new Date(context.myEvent.reg_open);
     const eventRegClose = new Date(context.myEvent.reg_close);
     const eventRegTimeString = eventRegOpen.toLocaleDateString() + ' - ' + eventRegClose.toLocaleDateString();
     document.getElementById('eventRegWindow').innerHTML = eventRegTimeString;
-    document.getElementById('register').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/event_attendee_register.php?id=${context.myEvent.id}`}
+    document.getElementById('eventRegWindow').classList.remove('bx--skeleton__text');
+    document.getElementById('register').onclick = () => {window.location.href = `EventRegister.html?id=${context.myEvent.id}`}
     if (!context.myEvent.can_admin) {
         document.getElementById('adminCol').remove();
         document.getElementById('attendee').remove();
@@ -23,6 +57,7 @@ document.addEventListener('contextProvided', () => {
         document.getElementById('delete').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/scripts/php/process/events.php?type=event&action=delete&id=${context.myEvent.id}`}
         document.getElementById('addSession').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/event_session_create.php?event_id=${context.myEvent.id}`}
     }
+    Array.from(document.getElementById('rowTarget').children).forEach((row) => {row.remove()});
     context.myEvent.sessions.forEach((session) => {
         const rowHTML = `<table><tbody><tr class="bx--parent-row" data-parent-row>
         <td class="bx--table-expand" data-event="expand">
@@ -43,7 +78,7 @@ document.addEventListener('contextProvided', () => {
             ${session.description}
         </td>
         <td>
-            ${new Date(session.start_time).toLocaleTimeString()} - ${new Date(session.end_time).toLocaleTimeString()}
+            ${new Date(Date.parse(session.start_time) + 14400000).toLocaleTimeString()} - ${new Date(Date.parse(session.end_time) + 14400000).toLocaleTimeString()}
         </td>
         ${context.myEvent.can_admin ? `<td class="bx--table-column-menu">
         <div data-overflow-menu role="menu" tabindex="0" aria-label="Overflow menu description"
@@ -209,12 +244,9 @@ document.addEventListener('contextProvided', () => {
         });
         const workshopRowsContainer = rowElements[1].querySelector('.bx--structured-list-tbody');
         workshopRows.forEach((workshopRow) => {workshopRowsContainer.appendChild(workshopRow)});
-        rowElements.forEach((rowElement) => {
-            document.getElementById('rowTarget').appendChild(rowElement);
-        });
+        rowElements.forEach((rowElement) => {document.getElementById('rowTarget').appendChild(rowElement)});
         if (session.name === 'Tutoring Hour') {
             document.getElementById(`showTeacherTutor${session.id}`).addEventListener('click', () => {
-                console.log("got action?")
                 if (!document.getElementById(`eventRow${session.id}`).classList.contains('showTutor')) {
                     document.getElementById(`eventRow${session.id}`).classList.add('showTutor');
                     document.getElementById(`showTeacherTutor${session.id}`).innerHTML = 'Hide teacher tutoring sessions...';
@@ -227,4 +259,69 @@ document.addEventListener('contextProvided', () => {
     });
     const rows = document.querySelectorAll('#rowTarget > *')
     rows[rows.length - 1].firstElementChild.classList.add('lastRowNoSpacingRah');
+    document.querySelectorAll('button.bx--table-sort').forEach((button) => {button.addEventListener('click', sortTableEvent)});
+    document.querySelector('.bx--data-table.bx--skeleton').classList.remove('bx--skeleton');
 });
+
+const sortTableEvent = (event) => {
+    const rows = Array.from(document.querySelectorAll('.bx--parent-row'))
+    const expandableContent = Array.from(document.querySelectorAll('.bx--expandable-row-content'))
+    const mergedRows = rows.map((row, index) => {
+        if (event.target.querySelector('span').innerHTML === 'Time') {
+            let sortedTime = row.children[event.target.parentElement.cellIndex].innerText.split(' - ')[0];
+            if (sortedTime.includes(' PM')) {
+                if (sortedTime.split(':')[0] !== '12') {
+                    sortedTime = sortedTime.replace(' PM', '');
+                    let timeChunks = sortedTime.split(':');
+                    timeChunks[0] = (parseInt(timeChunks[0]) + 12).toString();
+                    sortedTime = timeChunks.join(':');
+                } else {
+                    sortedTime = sortedTime.replace(' PM', '');
+                }
+            } else {
+                sortedTime = sortedTime.replace(' AM', '');
+            }
+            let timeChunks = sortedTime.split(':');
+            if (timeChunks[0].length === 1) {
+                timeChunks[0] = '0' + timeChunks[0];
+            }
+            sortedTime = timeChunks.join(':');
+            const sortedColumn = Date.parse(new Date(Date.parse(context.myEvent.e_date) + 14400000).toISOString().split('T')[0] + 'T' + sortedTime + '.000Z')
+            console.log(sortedColumn, sortedTime, row)
+            return {row: row, expandableContent: expandableContent[index], sortedColumn: sortedColumn };
+        } 
+        return {row: row, expandableContent: expandableContent[index], sortedColumn: row.children[event.target.parentElement.cellIndex].innerText};
+    })
+    let sortedRows
+    if (!event.target.classList.contains('bx--table-sort--active')) {
+        if (globalThis.originalRows === undefined) {
+            globalThis.originalRows = mergedRows;
+        }
+        sortedRows = mergedRows.sort((a, b) => {
+            if (a.sortedColumn < b.sortedColumn) {
+                return -1;
+            }
+            if (a.sortedColumn > b.sortedColumn) {
+                return 1;
+            }
+            return 0;
+        });
+    } else if (event.target.classList.contains('bx--table-sort--ascending')) {
+        sortedRows = mergedRows.sort((a, b) => {
+            if (a.sortedColumn > b.sortedColumn) {
+                return -1;
+            }
+            if (a.sortedColumn < b.sortedColumn) {
+                return 1;
+            }
+            return 0;
+        });
+    } else if (event.target.classList.contains('bx--table-sort--active') && !event.target.classList.contains('bx--table-sort--ascending')) {
+        sortedRows = globalThis.originalRows;
+    }
+    document.getElementById('rowTarget').innerHTML = '';
+    sortedRows.forEach((row) => {
+        document.getElementById('rowTarget').appendChild(row.row);
+        document.getElementById('rowTarget').appendChild(row.expandableContent);
+    });
+}
