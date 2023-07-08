@@ -39,6 +39,8 @@ document.addEventListener('contextProvided', () => {
         } else {
             document.getElementById('home-greeting').innerHTML = `Good evening, ${context.userSession.firstName}.`;
         }
+        document.getElementById('home-greeting').classList.remove('bx--skeleton__text')
+        document.getElementById('home-greeting').classList.remove('bx--skeleton__heading')
     } else {
         debugger;
         window.location.href = 'Login.html?redirect=' + window.location.pathname;
