@@ -150,7 +150,7 @@ const login = async (e) => {
         document.getElementById('loginButtonContainer').classList.add('load');
         /** @type {LoginStatus} */
         let login;
-        const response = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login', {
+        const response = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login' + (document.getElementById('persist').checked ? '&persist=yes' : ''), {
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
