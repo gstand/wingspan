@@ -1567,3 +1567,44 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   }
 }
 /* #endregion */
+/* #region event list page styles */
+#createEvent {
+  display: none;
+  float:right;
+}
+
+#eventTable {
+  margin-top: .5rem;
+}
+
+#eventTable .bx--data-table td {
+  background: var(--cds-ui-02);
+}
+
+.secondLevelContainer:has(#eventTable) {
+  background-color: var(--cds-ui-01);
+  width: 100vw;
+  min-height: calc(100vh - 9.625rem);
+  padding: 2rem;
+}
+
+.bx--content:has(.top) {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 10;
+}
+
+.secondLevelContainer:has(#eventTable) {
+  margin-top: 10rem;
+}
+
+@media (max-width: 66rem) {
+  .secondLevelContainer:has(#eventTable) {
+      min-height: calc(100vh - 12.45rem);
+      min-width: 100vh;
+      width: fit-content;
+  }
+}
+/* #endregion */
+/* #region event details page styles */

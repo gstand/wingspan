@@ -1,3 +1,19 @@
+window.addEventListener('load', async () => {
+    await getUserSession();
+    const response = await fetch('//' + window.location.host + '/scripts/php/event-listWs.php');
+    const json = await response.json();
+    if (response.status !== 200) {
+        if (json && json.code === 'unauthenticated') {
+            window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
+        } else {
+            throwContextError("HTTP error on fetching event list: " + response.status + " " + response.statusText);
+            throw new Error('HTTP error ' + response.status);
+        }
+    }
+    globalThis.context.myEventList = json;
+    document.dispatchEvent(contextProvided);
+    document.getElementById('progress-bar').remove();
+})
 document.addEventListener('contextProvided', () => {
     if (context.myEventList.allowAdd) {
         document.getElementById('createEvent').style.display = 'inline';
@@ -28,9 +44,9 @@ document.addEventListener('contextProvided', () => {
                     <ul class="bx--overflow-menu-options bx--overflow-menu--flip">
                         <li class="bx--overflow-menu-options__option bx--table-row--menu-option" id='register'>
                             <button class="bx--overflow-menu-options__btn"
-                                onclick="window.location.href = 'https://fcsia-event.codefi.com/samples/event_attendee.php?id=${event.id}'">
+                                onclick="window.location.href = 'EventRegister.html?id=${event.id}'">
                                 <div class="bx--overflow-menu-options__option-content">
-                                <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" width="16" height="16" focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;">
                                 <polygon points="30,22 24,22 24,16 22,16 22,22 16,22 16,24 22,24 22,30 24,30 24,24 30,24 		" style="fill: #525252;"/>
                                 <path d="M28,6c0-1.1-0.9-2-2-2h-4V2h-2v2h-8V2h-2v2H6C4.9,4,4,4.9,4,6v20c0,1.1,0.9,2,2,2h8v-2H6V6h4v2h2V6h8v2h2V6h4v8h2V6z" style="fill: #525252;"/>
                             </svg> Register
@@ -39,7 +55,7 @@ document.addEventListener('contextProvided', () => {
                         </li>
                         <li class="bx--overflow-menu-options__option bx--table-row--menu-option" id='edit'>
                             <button class="bx--overflow-menu-options__btn"
-                                onclick="window.location.href = 'https://fcsia-event.codefi.com/samples/event_create.php?action=edit&id=${event.id}'">
+                                onclick="window.location.href = '/event_create.php?action=edit&id=${event.id}'">
                                 <div class="bx--overflow-menu-options__option-content">
                                     <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                         style="will-change: transform;"
@@ -54,7 +70,7 @@ document.addEventListener('contextProvided', () => {
                         </li>
                         <li class="bx--overflow-menu-options__option bx--table-row--menu-option" id='delete'>
                             <button class="bx--overflow-menu-options__btn"
-                                onclick="window.location.href = 'https://fcsia-event.codefi.com/samples/events.php?type=event&action=delete&id=${event.id}'">
+                                onclick="window.location.href = '/events.php?type=event&action=delete&id=${event.id}'">
                                 <div class="bx--overflow-menu-options__option-content">
                                     <svg focusable="false" preserveAspectRatio="xMidYMid meet"
                                         style="will-change: transform;"
@@ -87,8 +103,10 @@ document.addEventListener('contextProvided', () => {
             return parsed
         })
         const table = document.getElementById('eventRowContainer')
-        document.querySelector('#eventTable table').classList.remove('bx--skeleton')
-        // CarbonComponents.watch();
+        table.innerHTML = ''
         eventElements.forEach((element) => { table.appendChild(element) })
+        document.querySelector('#eventTable table').classList.remove('bx--skeleton')
+    } else {
+        throwContextError('No events found/returned')
     }
 })
