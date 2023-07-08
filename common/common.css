@@ -1319,6 +1319,9 @@ button.bx--btn .bx--btn__icon.login-hotfix {
 
 .top #mobileEventName, .top #mobileTitle {
   display: none;
+  text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
 }
 .secondLevelContainer {
   background-color: var(--cds-ui-01, #ffffff);
@@ -1504,9 +1507,13 @@ button.bx--btn .bx--btn__icon.login-hotfix {
       width: unset;
       float: unset;
   }
-  .bx--content:has(.top > #mobileEventName) ~ .secondLevelContainer {
+  .bx--content:has(.top > #mobileEventName):has(.top > div[data-content-switcher]) ~ .secondLevelContainer {
     min-height: calc(100vh - 15.4rem);
     margin-top: 15.4rem;
+  }
+  .bx--content:has(.top > #mobileEventName) ~ .secondLevelContainer {
+    min-height: calc(100vh - 12.9rem);
+      margin-top: 12.9rem;
   }
   
   .secondLevelContainer {
@@ -1611,4 +1618,22 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   }
 }
 /* #endregion */
-/* #region event details page styles */
+/* #region event owner page styles */
+.IAC--template__eventOwnerPage .bx--tile {
+  background: var(--cds-ui-02, #ffffff);
+  margin-bottom: 1rem;
+  width: calc(100vw - 6rem);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.IAC--template__eventOwnerPage .bx--tile {
+  cursor: pointer;
+}
+.IAC--template__eventOwnerPage .bx--tile:hover {
+background-color: var(--cds-hover-ui, #e5e5e5);
+}
+/* #endregion */
+/* #region event pass page styles */
+
+/* #endregion */

@@ -28,21 +28,44 @@
     <link rel="stylesheet" href="common/common.css">
     <script src="common/carbon.js"></script>
     <script src="common/common.js"></script>
-    <link rel="stylesheet" href="style/eventOwner.css">
     <script type="module" src="controllers/eventOwner.js"></script>
 </head>
 
-<body class="bx--body">
+<body class="bx--body IAC--template__eventOwnerPage">
     <common-header></common-header>
     <div class="bx--content">
         <div class="top">
-            <h1 id="titleName">Event Pass - </h1>
-            <h1 id="mobileTitle">Event Pass</h1>
-            <h2 id="mobileEventName"></h2>
+            <h1 id="titleName" class="bx--skeleton__text bx--skeleton__heading">Events Owned - </h1>
+            <h1 id="mobileTitle">Events Owned</h1>
+            <h2 id="mobileEventName" class="bx--skeleton__text bx--skeleton__heading">Lorem ipsum dolor</h2>
         </div>
     </div>
     <div class="secondLevelContainer">
       <ul data-accordion class="bx--accordion">
+        <li data-accordion-item class="bx--accordion__item loading">
+            <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane-loading-1">
+              <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+              <div class="bx--accordion__title bx--skeleton__text">Lorem ipsum</div>
+            </button>
+            <div id="pane-loading-1" class="bx--accordion__content">
+                <div class="bx--tile" onclick="window.location.href = '/event_workshop.php?workshop_id=${workshop.id}&session_id=${session.id}'">
+                    <h4 class="bx--skeleton__text bx--skeleton__heading">Lorem ipsum</h4>
+                    <p class="bx--skeleton__text">Lorem ipsum</p>
+                  </div>
+            </div>
+          </li>
+          <li data-accordion-item class="bx--accordion__item loading">
+            <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane-loading-2">
+              <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+              <div class="bx--accordion__title bx--skeleton__text">Lorem ipsum</div>
+            </button>
+            <div id="pane-loading-2" class="bx--accordion__content">
+                <div class="bx--tile" onclick="window.location.href = '/event_workshop.php?workshop_id=${workshop.id}&session_id=${session.id}'">
+                    <h4 class="bx--skeleton__text bx--skeleton__heading">Lorem ipsum</h4>
+                    <p class="bx--skeleton__text">Lorem ipsum</p>
+                  </div>
+            </div>
+          </li>
     </ul>
     </div>
 </body>
