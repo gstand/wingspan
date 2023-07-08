@@ -74,10 +74,12 @@ window.addEventListener('load', () => {
         document.getElementById('step1').classList.remove('middle');
         document.getElementById('step1').classList.add('left');
         document.getElementById('username').tabIndex = -1;
+        document.getElementById('password').removeAttribute('tabindex');
     }
     globalThis.nextPage = nextPage;
     const prevPage = () => {
         document.getElementById('username').removeAttribute('tabindex');
+        document.getElementById('password').tabIndex = -1;
         document.getElementById('loginSubtitle').classList.remove('show');
         document.getElementById('step1').classList.remove('left');
         document.getElementById('step1').classList.add('middle');
