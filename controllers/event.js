@@ -10,12 +10,17 @@ window.addEventListener('load', async () => {
         document.getElementById('sessionsButton').click();
     }
     const response = await fetch('//' + window.location.host + '/scripts/php/eventWs.php?id=' + eventId);
-    const json = await response.json();
+    try {
+        var json = await response.json();
+    } catch (error) {
+        throwContextError('Error parsing JSON response from server. Event might not exist, see issue #.'); // TODO: issue #
+        throw error;
+    }
     if (response.status !== 200) {
         if (json && json.code === 'unauthenticated') {
             window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
         } else {
-            throwContextError();
+            throwContextError('HTTP error when fetching event data: ' + response.status + ' ' + response.statusText);
             throw new Error('HTTP error ' + response.status);
         }
     }
@@ -44,7 +49,7 @@ document.addEventListener('contextProvided', () => {
     const eventRegTimeString = eventRegOpen.toLocaleDateString() + ' - ' + eventRegClose.toLocaleDateString();
     document.getElementById('eventRegWindow').innerHTML = eventRegTimeString;
     document.getElementById('eventRegWindow').classList.remove('bx--skeleton__text');
-    document.getElementById('register').onclick = () => {window.location.href = `EventRegister.html?id=${context.myEvent.id}`}
+    document.getElementById('register').onclick = () => { window.location.href = `EventRegister.html?id=${context.myEvent.id}` }
     if (!context.myEvent.can_admin) {
         document.getElementById('adminCol').remove();
         document.getElementById('attendee').remove();
@@ -52,12 +57,12 @@ document.addEventListener('contextProvided', () => {
         document.getElementById('delete').remove();
         document.getElementById('addSession').classList.add('bx--btn--disabled')
     } else {
-        document.getElementById('attendee').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/event_attendee_report.php?event_id=${context.myEvent.id}`}
-        document.getElementById('edit').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/event_create.php?action=edit&id=${context.myEvent.id}`}
-        document.getElementById('delete').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/scripts/php/process/events.php?type=event&action=delete&id=${context.myEvent.id}`}
-        document.getElementById('addSession').onclick = () => {window.location.href = `https://fcsia-event.codefi.com/samples/event_session_create.php?event_id=${context.myEvent.id}`}
+        document.getElementById('attendee').onclick = () => { window.location.href = `https://fcsia-event.codefi.com/samples/event_attendee_report.php?event_id=${context.myEvent.id}` }
+        document.getElementById('edit').onclick = () => { window.location.href = `https://fcsia-event.codefi.com/samples/event_create.php?action=edit&id=${context.myEvent.id}` }
+        document.getElementById('delete').onclick = () => { window.location.href = `https://fcsia-event.codefi.com/samples/scripts/php/process/events.php?type=event&action=delete&id=${context.myEvent.id}` }
+        document.getElementById('addSession').onclick = () => { window.location.href = `https://fcsia-event.codefi.com/samples/event_session_create.php?event_id=${context.myEvent.id}` }
     }
-    Array.from(document.getElementById('rowTarget').children).forEach((row) => {row.remove()});
+    Array.from(document.getElementById('rowTarget').children).forEach((row) => { row.remove() });
     context.myEvent.sessions.forEach((session) => {
         const rowHTML = `<table><tbody><tr class="bx--parent-row" data-parent-row>
         <td class="bx--table-expand" data-event="expand">
@@ -243,8 +248,8 @@ document.addEventListener('contextProvided', () => {
             return parser.parseFromString(rowString, 'text/html').querySelector('div');
         });
         const workshopRowsContainer = rowElements[1].querySelector('.bx--structured-list-tbody');
-        workshopRows.forEach((workshopRow) => {workshopRowsContainer.appendChild(workshopRow)});
-        rowElements.forEach((rowElement) => {document.getElementById('rowTarget').appendChild(rowElement)});
+        workshopRows.forEach((workshopRow) => { workshopRowsContainer.appendChild(workshopRow) });
+        rowElements.forEach((rowElement) => { document.getElementById('rowTarget').appendChild(rowElement) });
         if (session.name === 'Tutoring Hour') {
             document.getElementById(`showTeacherTutor${session.id}`).addEventListener('click', () => {
                 if (!document.getElementById(`eventRow${session.id}`).classList.contains('showTutor')) {
@@ -259,7 +264,7 @@ document.addEventListener('contextProvided', () => {
     });
     const rows = document.querySelectorAll('#rowTarget > *')
     rows[rows.length - 1].firstElementChild.classList.add('lastRowNoSpacingRah');
-    document.querySelectorAll('button.bx--table-sort').forEach((button) => {button.addEventListener('click', sortTableEvent)});
+    document.querySelectorAll('button.bx--table-sort').forEach((button) => { button.addEventListener('click', sortTableEvent) });
     document.querySelector('.bx--data-table.bx--skeleton').classList.remove('bx--skeleton');
 });
 
@@ -288,9 +293,9 @@ const sortTableEvent = (event) => {
             sortedTime = timeChunks.join(':');
             const sortedColumn = Date.parse(new Date(Date.parse(context.myEvent.e_date) + 14400000).toISOString().split('T')[0] + 'T' + sortedTime + '.000Z')
             console.log(sortedColumn, sortedTime, row)
-            return {row: row, expandableContent: expandableContent[index], sortedColumn: sortedColumn };
-        } 
-        return {row: row, expandableContent: expandableContent[index], sortedColumn: row.children[event.target.parentElement.cellIndex].innerText};
+            return { row: row, expandableContent: expandableContent[index], sortedColumn: sortedColumn };
+        }
+        return { row: row, expandableContent: expandableContent[index], sortedColumn: row.children[event.target.parentElement.cellIndex].innerText };
     })
     let sortedRows
     if (!event.target.classList.contains('bx--table-sort--active')) {

@@ -1,12 +1,17 @@
 window.addEventListener('load', async () => {
     await getUserSession();
     const response = await fetch('//' + window.location.host + '/scripts/php/event-listWs.php');
-    const json = await response.json();
+    try {
+        var json = await response.json();
+    } catch (error) {
+        throwContextError('Error parsing JSON response from server.');
+        throw error;
+    }
     if (response.status !== 200) {
         if (json && json.code === 'unauthenticated') {
             window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
         } else {
-            throwContextError("HTTP error on fetching event list: " + response.status + " " + response.statusText);
+            throwContextError('HTTP error when fetching event list: ' + response.status + ' ' + response.statusText);
             throw new Error('HTTP error ' + response.status);
         }
     }
