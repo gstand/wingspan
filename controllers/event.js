@@ -32,8 +32,7 @@ window.addEventListener('load', async () => {
 document.addEventListener('contextProvided', () => {
     document.getElementById('titleName').innerHTML = "Event Details - " + context.myEvent.name;
     document.querySelector('title').innerHTML = "Event Details - " + context.myEvent.name + " - Innovation Academy Events";
-    document.getElementById('titleName').classList.remove('bx--skeleton__text');
-    document.getElementById('titleName').classList.remove('bx--skeleton__heading');
+    document.getElementById('titleName').classList.remove(['bx--skeleton__text', 'bx--skeleton__heading']);
     document.getElementById('eventDesc').innerHTML = context.myEvent.event_description;
     document.getElementById('eventDesc').classList.remove('bx--skeleton__text');
     document.getElementById('eventType').innerHTML = context.myEvent.ev_type + ' - ' + context.myEvent.ev_type_description;
