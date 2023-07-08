@@ -1120,7 +1120,7 @@ input:-webkit-autofill:active{
   border-bottom: 1px solid var(--cds-ui-04, #dfe3e6);
   margin-bottom: 1rem;
   display: flex;
-  overflow-x: auto;
+  overflow-x: clip;
 }
 .loginSteps .loginStep {
   transition: left 340ms cubic-bezier(0.2, 0.2, 0.38, 0.9);
@@ -1317,10 +1317,9 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   text-overflow: ellipsis;
 }
 
-.top #mobileTitle {
+.top #mobileEventName, .top #mobileTitle {
   display: none;
 }
-
 .secondLevelContainer {
   background-color: var(--cds-ui-01, #ffffff);
   margin-top: -.5rem;
@@ -1497,7 +1496,7 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   .top #titleName {
       display: none;
   }
-  .top #mobileTitle {
+  .top #mobileEventName, .top #mobileTitle {
       display: block;
   }
   .top .inlineSwitcher {
@@ -1505,6 +1504,11 @@ button.bx--btn .bx--btn__icon.login-hotfix {
       width: unset;
       float: unset;
   }
+  .bx--content:has(.top > #mobileEventName) ~ .secondLevelContainer {
+    min-height: calc(100vh - 15.4rem);
+    margin-top: 15.4rem;
+  }
+  
   .secondLevelContainer {
       min-height: calc(100vh - 12.9rem);
       margin-top: 12.9rem;

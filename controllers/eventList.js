@@ -29,7 +29,7 @@ document.addEventListener('contextProvided', () => {
         const eventElements = context.myEventList.events.map((event) => {
             const htmlString = `<tr>
             <td>
-                ${event.name}
+                <a href="Event.html?id=${event.id}">${event.name}</a>
             </td>
             <td>
                 ${event.title ? event.title : "No title"}

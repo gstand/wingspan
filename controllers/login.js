@@ -73,9 +73,11 @@ window.addEventListener('load', () => {
     const nextPage = () => {
         document.getElementById('step1').classList.remove('middle');
         document.getElementById('step1').classList.add('left');
+        document.getElementById('username').tabIndex = -1;
     }
     globalThis.nextPage = nextPage;
     const prevPage = () => {
+        document.getElementById('username').removeAttribute('tabindex');
         document.getElementById('loginSubtitle').classList.remove('show');
         document.getElementById('step1').classList.remove('left');
         document.getElementById('step1').classList.add('middle');
@@ -159,6 +161,7 @@ const verifyUsername = () => {
     if (document.getElementById('username').value.length > 0) {
         document.getElementById('step1').classList.remove('middle');
         document.getElementById('step1').classList.add('left');
+        document.getElementById('password').focus();
         document.getElementById('loginSubtitle').innerHTML = 'You are signing in as ' + document.getElementById('username').value + '. <a href="#" onclick="prevPage()">Not you?</a>';
         document.getElementById('loginSubtitle').classList.add('show');
     } else {
