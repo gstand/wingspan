@@ -4022,24 +4022,24 @@ var CarbonComponents = (function (exports) {
 	      });
 	    });
 
-	    // _defineProperty(_assertThisInitialized(_this), "_keydownHandler", function (evt) {
-	    //   var searchContainer = _this.element.querySelector(_this.options.selectorToolbarSearchContainer);
+	    _defineProperty(_assertThisInitialized(_this), "_keydownHandler", function (evt) {
+	      var searchContainer = _this.element.querySelector(_this.options.selectorToolbarSearchContainer);
 
-	    //   var searchEvent = eventMatches(evt, _this.options.selectorSearchMagnifier);
-	    //   var activeSearch = searchContainer.classList.contains(_this.options.classToolbarSearchActive);
+	      var searchEvent = eventMatches(evt, _this.options.selectorSearchMagnifier);
+	      var activeSearch = searchContainer.classList.contains(_this.options.classToolbarSearchActive);
 
-	    //   if (evt.which === 27) {
-	    //     _this._actionBarCancel();
-	    //   }
+	      if (evt.which === 27) {
+	        _this._actionBarCancel();
+	      }
 
-	    //   if (searchContainer && searchEvent && evt.which === 13) {
-	    //     _this.activateSearch(searchContainer);
-	    //   }
+	      if (searchContainer && searchEvent && evt.which === 13) {
+	        _this.activateSearch(searchContainer);
+	      }
 
-	    //   if (activeSearch && evt.which === 27) {
-	    //     _this.deactivateSearch(searchContainer, evt);
-	    //   }
-	    // }); BUG: !UNOFFICIAL MODIFICATION! this event handler repeatedly throws errors on all text fields within a DataTable presumably due to the missing option selectorToolbarSeatchContainer. We aren't using CDS' builtin search functionality (partially due to the shit documentation not showing how to) so this is commented out.
+	      if (activeSearch && evt.which === 27) {
+	        _this.deactivateSearch(searchContainer, evt);
+	      }
+	    });
 
 	    _defineProperty(_assertThisInitialized(_this), "refreshRows", function () {
 	      var newExpandCells = toArray$7(_this.element.querySelectorAll(_this.options.selectorExpandCells));
