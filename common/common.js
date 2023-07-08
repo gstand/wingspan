@@ -1,102 +1,108 @@
-if (globalThis.devMode) {
-    const syntaxHighlight = (json) => {
-        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-            var cls = 'number';
-            if (/^"/.test(match)) {
-                if (/:$/.test(match)) {
-                    cls = 'key';
-                } else {
-                    cls = 'string';
+(async () => {
+    const response = await fetch('common/api_manifest.php');
+    const json = await response.json();
+    globalThis.devmode = json.devmode;
+    if (json.devmode) {
+        const syntaxHighlight = (json) => {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
                 }
-            } else if (/true|false/.test(match)) {
-                cls = 'boolean';
-            } else if (/null/.test(match)) {
-                cls = 'null';
-            }
-            return '<span class="' + cls + '">' + match + '</span>';
-        });
-    }
-    console.log('devmode enabled');
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/json-formatter-js';
-    document.head.appendChild(script);
-    script.onload = () => {
-        document.addEventListener('contextProvided', () => {
-            const devmodeModalHTML = `<div data-modal id="modal-devmode" class="bx--modal " role="dialog"
-            aria-modal="true" aria-labelledby="modal-devmode-label" aria-describedby="modal-devmode-heading"
-            tabindex="-1">
-                <div class="bx--modal-container">
-                    <div class="bx--modal-header">
-                        <p class="bx--modal-header__heading bx--type-beta" id="modal-devmode-heading">Page Context</p>
-                        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal"
-                            data-modal-primary-focus>
-                            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-                                xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
-                                viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="bx--modal-content" tabindex="0">
-                        <div id="devModeJSONFormatter"></div>
-                        <div class="bx--snippet bx--snippet--multi"
-                            data-code-snippet>
-                            <div class="bx--snippet-container"
-                                aria-label="Code Snippet Text">
-                                <pre><code id="devModeContextRaw"></code></pre>
-                            </div>
-                            <button data-copy-btn class="bx--copy-btn" type="button" tabindex="0">
-                                <span class="bx--assistive-text bx--copy-btn__feedback">Copied!</span>
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+        console.log('devmode enabled');
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/json-formatter-js';
+        document.head.appendChild(script);
+        script.onload = () => {
+            document.addEventListener('contextProvided', () => {
+                document.getElementById('UserIP').parentElement.removeAttribute('hidden')
+                const devmodeModalHTML = `<div data-modal id="modal-devmode" class="bx--modal " role="dialog"
+                aria-modal="true" aria-labelledby="modal-devmode-label" aria-describedby="modal-devmode-heading"
+                tabindex="-1">
+                    <div class="bx--modal-container">
+                        <div class="bx--modal-header">
+                            <p class="bx--modal-header__heading bx--type-beta" id="modal-devmode-heading">Page Context</p>
+                            <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal"
+                                data-modal-primary-focus>
                                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-                                    xmlns="http://www.w3.org/2000/svg" class="bx--snippet__icon" width="16" height="16"
+                                    xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
                                     viewBox="0 0 16 16" aria-hidden="true">
-                                    <path
-                                        d="M14,5v9H5V5h9m0-1H5A1,1,0,0,0,4,5v9a1,1,0,0,0,1,1h9a1,1,0,0,0,1-1V5a1,1,0,0,0-1-1Z">
+                                    <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
                                     </path>
-                                    <path d="M2,9H1V2A1,1,0,0,1,2,1H9V2H2Z"></path>
-                                </svg>
-                            </button>
-                            <button
-                                class="bx--btn bx--btn--ghost bx--btn--sm bx--snippet-btn--expand"
-                                type="button">
-                                <span class="bx--snippet-btn--text" data-show-more-text="Show more"
-                                    data-show-less-text="Show less">Show
-                                    more</span>
-                                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-                                    xmlns="http://www.w3.org/2000/svg" aria-label="Show more icon"
-                                    class="bx--icon-chevron--down bx--snippet__icon" width="16" height="16" viewBox="0 0 16 16"
-                                    role="img">
-                                    <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
                                 </svg>
                             </button>
                         </div>
+                        <div class="bx--modal-content" tabindex="0">
+                            <div id="devModeJSONFormatter"></div>
+                            <div class="bx--snippet bx--snippet--multi"
+                                data-code-snippet>
+                                <div class="bx--snippet-container"
+                                    aria-label="Code Snippet Text">
+                                    <pre><code id="devModeContextRaw"></code></pre>
+                                </div>
+                                <button data-copy-btn class="bx--copy-btn" type="button" tabindex="0">
+                                    <span class="bx--assistive-text bx--copy-btn__feedback">Copied!</span>
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                        xmlns="http://www.w3.org/2000/svg" class="bx--snippet__icon" width="16" height="16"
+                                        viewBox="0 0 16 16" aria-hidden="true">
+                                        <path
+                                            d="M14,5v9H5V5h9m0-1H5A1,1,0,0,0,4,5v9a1,1,0,0,0,1,1h9a1,1,0,0,0,1-1V5a1,1,0,0,0-1-1Z">
+                                        </path>
+                                        <path d="M2,9H1V2A1,1,0,0,1,2,1H9V2H2Z"></path>
+                                    </svg>
+                                </button>
+                                <button
+                                    class="bx--btn bx--btn--ghost bx--btn--sm bx--snippet-btn--expand"
+                                    type="button">
+                                    <span class="bx--snippet-btn--text" data-show-more-text="Show more"
+                                        data-show-less-text="Show less">Show
+                                        more</span>
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                                        xmlns="http://www.w3.org/2000/svg" aria-label="Show more icon"
+                                        class="bx--icon-chevron--down bx--snippet__icon" width="16" height="16" viewBox="0 0 16 16"
+                                        role="img">
+                                        <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="bx--modal-content--overflow-indicator"></div>
                     </div>
-                    <div class="bx--modal-content--overflow-indicator"></div>
-                </div>
-                <span tabindex="0"></span>
-            </div>`
-            const devmodeModal = new DOMParser().parseFromString(devmodeModalHTML, 'text/html').body.firstChild;
-            document.body.appendChild(devmodeModal);
-            const formatter = new JSONFormatter(context, 1, { "theme": document.querySelector(":root").getAttribute('theme') == 'g100' ? "dark" : "light" });
-            const contextString = syntaxHighlight(JSON.stringify(context, null, 2));
-            document.getElementById('devModeContextRaw').innerHTML = contextString;
-            document.getElementById('devModeJSONFormatter').appendChild(formatter.render());
-            const devmodeModalButtonHTML = `<button
-            class="bx--btn bx--btn--primary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center  bx--btn--sm" data-modal-target="#modal-devmode" id="devmodeButton">
-                <span class="bx--assistive-text">Page context</span>
-                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
-                <polygon points="18.83 26 21.41 23.42 20 22 16 26 20 30 21.42 28.59 18.83 26" />
-                <polygon points="27.17 26 24.59 28.58 26 30 30 26 26 22 24.58 23.41 27.17 26" />
-                <path d="M14,28H8V4h8v6a2.0058,2.0058,0,0,0,2,2h6v6h2V10a.9092.9092,0,0,0-.3-.7l-7-7A.9087.9087,0,0,0,18,2H8A2.0058,2.0058,0,0,0,6,4V28a2.0058,2.0058,0,0,0,2,2h6ZM18,4.4,23.6,10H18Z" />
-                </svg>
-            </button>`
-            const devmodeModalButton = new DOMParser().parseFromString(devmodeModalButtonHTML, 'text/html').body.firstChild;
-            document.querySelector('.bottomControls').appendChild(devmodeModalButton);
-        })
+                    <span tabindex="0"></span>
+                </div>`
+                const devmodeModal = new DOMParser().parseFromString(devmodeModalHTML, 'text/html').body.firstChild;
+                document.body.appendChild(devmodeModal);
+                const formatter = new JSONFormatter(context, 1, { "theme": document.querySelector(":root").getAttribute('theme') == 'g100' ? "dark" : "light" });
+                const contextString = syntaxHighlight(JSON.stringify(context, null, 2));
+                document.getElementById('devModeContextRaw').innerHTML = contextString;
+                document.getElementById('devModeJSONFormatter').appendChild(formatter.render());
+                const devmodeModalButtonHTML = `<button
+                class="bx--btn bx--btn--primary bx--btn--icon-only bx--tooltip__trigger bx--tooltip--a11y bx--tooltip--bottom bx--tooltip--align-center  bx--btn--sm" data-modal-target="#modal-devmode" id="devmodeButton">
+                    <span class="bx--assistive-text">Page context</span>
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--btn__icon" width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
+                    <polygon points="18.83 26 21.41 23.42 20 22 16 26 20 30 21.42 28.59 18.83 26" />
+                    <polygon points="27.17 26 24.59 28.58 26 30 30 26 26 22 24.58 23.41 27.17 26" />
+                    <path d="M14,28H8V4h8v6a2.0058,2.0058,0,0,0,2,2h6v6h2V10a.9092.9092,0,0,0-.3-.7l-7-7A.9087.9087,0,0,0,18,2H8A2.0058,2.0058,0,0,0,6,4V28a2.0058,2.0058,0,0,0,2,2h6ZM18,4.4,23.6,10H18Z" />
+                    </svg>
+                </button>`
+                const devmodeModalButton = new DOMParser().parseFromString(devmodeModalButtonHTML, 'text/html').body.firstChild;
+                document.querySelector('.bottomControls').appendChild(devmodeModalButton);
+            })
+        }
     }
-}
+})();
 
 CarbonComponents.settings.disableAutoInit = false;
 CarbonComponents.watch();
@@ -191,7 +197,7 @@ if (darkThemeMq.matches && theme === '') {
     document.querySelector(':root').setAttribute('theme', theme);
 }
 
-const throwContextError = () => {
+const throwContextError = (errorText = 'Unknown error') => {
     const notifHTML = `<div data-notification
   class="bx--inline-notification bx--inline-notification--error"
   role="alert">
@@ -199,7 +205,7 @@ const throwContextError = () => {
     <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z"></path><path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path></svg>
     <div class="bx--inline-notification__text-wrapper">
       <p class="bx--inline-notification__title">Error</p>
-      <p class="bx--inline-notification__subtitle">There was an error fetching your current page data. This can be caused by a variety of issues; which may include network issues, authentication issues, or et cetera. Try reloading the page, signing out and signing back in, and if issues persist, contact us here. <!--TODO: actually add this form(?) or whatever it'll be--></p> 
+      <p class="bx--inline-notification__subtitle">There was an error fetching your current page data. This can be caused by a variety of issues; which may include network issues, authentication issues, or et cetera. Try reloading the page, signing out and signing back in, and if issues persist, contact us here. Error details: ${errorText} </p> <!--TODO: actually add this form(?) or whatever it'll be--> 
     </div>
   </div>
 </div>`
@@ -214,9 +220,9 @@ const getUserSession = async () => {
     const json = await response.json();
     if (response.status !== 200) {
         if (json && json.code === 'unauthenticated') {
-            window.location.href = 'Login.html?redirect=' + window.location.pathname;
+            window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
         } else {
-            throwContextError();
+            throwContextError("Error getting user session, details in console.");
             throw new Error('HTTP error ' + response.status);
         }
     }
@@ -257,7 +263,7 @@ document.addEventListener('contextProvided', () => {
         }
     } else {
         debugger
-        window.location.href = 'Login.html?redirect=' + window.location.pathname;
+        window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
     }
 })
 
@@ -291,7 +297,7 @@ class CommonHeader extends HTMLElement {
             </path>
         </svg>
     </button>
-    <a class="bx--header__name" href="Home.html" title="">
+    <a class="bx--header__name" href="index.html" title="">
         <span class="bx--header__name--prefix">
             Innovation Academy
             &nbsp;
@@ -516,7 +522,7 @@ class CommonHeader extends HTMLElement {
         <p>You are signed in as:</p>
         <p id="UserInformaton"></p>
         <p>Role: <strong id="UserRole"></strong></p>
-        <p>IP: <strong id="UserIP"></strong></p>
+        <p hidden>IP: <strong id="UserIP"></strong></p>
         <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'scripts/php/login.php?action=logout'">
             Log out
         </button>
