@@ -14,7 +14,54 @@
 
 let loggingIn = false;
 CarbonComponents.HeaderNav.init();
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const action = params.get('action');
+    if (action === 'logout') {
+        const loadingHTML = `
+        <div class="bx--loading-overlay" id='logoutProgress'>
+        <div data-loading="" class="bx--loading" id="loadingWheel">
+        <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+            <title>Loading</title>
+            <circle class="bx--loading__stroke" cx="0" cy="0" r="37.5"></circle>
+        </svg>
+        </div>
+            <strong id="loadingMessage">Signing you out...</strong>
+        </div>`
+        const loadingElement = new DOMParser().parseFromString(loadingHTML, 'text/html').body.firstChild;
+        document.body.prepend(loadingElement);
+        const logoutResponse = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login')
+        try {
+            var json = await logoutResponse.json();
+        } catch (e) {
+            document.getElementById('loadingWheel').remove();
+            document.getElementById('loadingMessage').innerText = 'An error occurred while signing you out. Please clear your browser cookies to sign out, or try again later.';
+            throw e;
+        }
+        if (logoutResponse.ok) {
+            document.getElementById('logoutProgress').remove();
+            const notifHTML = `<div data-notification
+            class="bx--inline-notification bx--inline-notification--success"
+            role="alert">
+            <div class="bx--inline-notification__details">
+              <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-4.9,0-9,4.1-9,9s4.1,9,9,9s9-4,9-9S15,1,10,1z M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z"></path><path fill="none" d="M8.7,13.5l-3.2-3.2l1-1l2.2,2.2l4.8-4.8l1,1L8.7,13.5z" data-icon-path="inner-path" opacity="0"></path></svg>
+              <div class="bx--inline-notification__text-wrapper">
+                <p class="bx--inline-notification__title">Logout successful</p>
+                <p class="bx--inline-notification__subtitle">You have been logged out successfully. You can now safely close this browser tab, or log back in.</p>
+              </div>
+            </div>
+            <button data-notification-btn class="bx--inline-notification__close-button" type="button"
+              aria-label="close">
+              <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__close-icon" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z"></path></svg>
+            </button>
+          </div>`
+            const notif = new DOMParser().parseFromString(notifHTML, 'text/html').body.firstChild;
+            document.body.appendChild(notif);
+        } else {
+            document.getElementById('loadingWheel').remove();
+            document.getElementById('loadingMessage').innerText = 'An error occurred while signing you out. Please clear your browser cookies to sign out, or try again later.';
+        }
+    }
     document.getElementById('progress-bar').remove();
     const theme = getCookie('theme');
     if (theme == 'g100') {

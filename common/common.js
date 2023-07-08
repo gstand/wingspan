@@ -523,7 +523,7 @@ class CommonHeader extends HTMLElement {
         <p id="UserInformaton"></p>
         <p>Role: <strong id="UserRole"></strong></p>
         <p hidden>IP: <strong id="UserIP"></strong></p>
-        <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'scripts/php/login.php?action=logout'">
+        <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'Login.html?action=logout&redirect=${window.location.href.replace(window.location.origin, '')}'">
             Log out
         </button>
         <div class="bottomControls">
