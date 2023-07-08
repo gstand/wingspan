@@ -28,17 +28,16 @@
     <link rel="stylesheet" href="common/common.css">
     <script src="common/carbon.js"></script>
     <script src="common/common.js"></script>
-    <link rel="stylesheet" href="style/eventPass.css">
     <script type="module" src="controllers/eventPass.js"></script>
 </head>
 
-<body class="bx--body">
+<body class="bx--body IAC--template__eventPassPage">
     <common-header></common-header>
     <div class="bx--content">
         <div class="top">
-            <h1 id="titleName">Event Pass - </h1>
+            <h1 id="titleName" class="bx--skeleton__text bx--skeleton__heading">Event Pass - </h1>
             <h1 id="mobileTitle">Event Pass</h1>
-            <h2 id="mobileEventName"></h2>
+            <h2 id="mobileEventName" class="bx--skeleton__text bx--skeleton__heading">lorem ipsum</h2>
             <button class="bx--btn bx--btn--primary" type="button" id="modifyReg">
                 Modify registration
                 <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
@@ -55,20 +54,46 @@
         <div class="detailsTileContainer">
             <div class="bx--tile detailTile">
                 <h2>Description</h2>
-                <p id="eventDesc"></p>
+                <p id="eventDesc" class="bx--skeleton__text"></p>
             </div>
             <div class="bx--tile detailTile">
                 <h2>Event Type</h2>
-                <p id="eventType"></p>
+                <p id="eventType" class="bx--skeleton__text"></p>
             </div>
             <div class="bx--tile detailTile">
                 <h2>Event Date</h2>
-                <p id="eventDate"></p>
+                <p id="eventDate" class="bx--skeleton__text"></p>
             </div>
             <div class="bx--tile detailTile">
                 <h2>Registration Window</h2>
-                <p id="eventRegWindow"></p>
+                <p id="eventRegWindow" class="bx--skeleton__text"></p>
             </div>
+        </div>
+        <div class="bx--tile">
+            <h1 class="bx--skeleton__text">0</h1>
+            <h2 class="eventName bx--skeleton__text">Lorem ipsum</h2>
+            <h2 class="time bx--skeleton__text">Lorem ipsum</h2>
+            
+                <h4 class="bx--skeleton__text">Lorem ipsum</h4>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
+        </div>
+        <div class="bx--tile">
+            <h1 class="bx--skeleton__text">0</h1>
+            <h2 class="eventName bx--skeleton__text">Lorem ipsum</h2>
+            <h2 class="time bx--skeleton__text">Lorem ipsum</h2>
+            
+                <h4 class="bx--skeleton__text">Lorem ipsum</h4>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
+                <p class="bx--skeleton__text">
+                    Lorem ipsum</p>
         </div>
     </div>
 </body>
