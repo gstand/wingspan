@@ -220,7 +220,7 @@ const getUserSession = async () => {
     const json = await response.json();
     if (response.status !== 200) {
         if (json && json.code === 'unauthenticated') {
-            window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
+            window.location.href = 'Login.html?redirect=' + encodeURIComponent(window.location.href.replace(window.location.origin, ''));
         } else {
             throwContextError("Error getting user session, details in console.");
             throw new Error('HTTP error ' + response.status);
@@ -263,7 +263,7 @@ document.addEventListener('contextProvided', () => {
         }
     } else {
         debugger
-        window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
+        window.location.href = 'Login.html?redirect=' + encodeURIComponent(window.location.href.replace(window.location.origin, ''));
     }
 })
 
@@ -523,7 +523,7 @@ class CommonHeader extends HTMLElement {
         <p id="UserInformaton"></p>
         <p>Role: <strong id="UserRole"></strong></p>
         <p hidden>IP: <strong id="UserIP"></strong></p>
-        <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'Login.html?action=logout&redirect=${window.location.href.replace(window.location.origin, '')}'">
+        <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'Login.html?action=logout&redirect=${encodeURIComponent(window.location.href.replace(window.location.origin, ''))}'">
             Log out
         </button>
         <div class="bottomControls">

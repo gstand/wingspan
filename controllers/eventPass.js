@@ -18,7 +18,7 @@ window.addEventListener('load', async () => {
     }
     if (response.status !== 200) {
       if (json && json.code === 'unauthenticated') {
-        window.location.href = 'Login.html?redirect=' + window.location.href.replace(window.location.origin, '');
+        window.location.href = 'Login.html?redirect=' + encodeURIComponent(window.location.href.replace(window.location.origin, ''));
       } else {
         throwContextError('HTTP error when fetching event data: ' + response.status + ' ' + response.statusText);
         throw new Error('HTTP error ' + response.status);
