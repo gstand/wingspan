@@ -13,7 +13,7 @@ window.addEventListener('load', async () => {
                 break;
             }
         }
-    }, 5000)
+    }, 10000)
     await getUserSession();
     document.dispatchEvent(contextProvided);
     document.getElementById('progress-bar').remove();
