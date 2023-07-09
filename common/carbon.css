@@ -14340,8 +14340,8 @@ button.bx--dropdown-text:focus {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   content: '';
   background-color: transparent;
   opacity: 0;
@@ -21499,7 +21499,7 @@ a.bx--header__menu-item:focus>svg {
 
 @media (max-width: 66rem) {
   .bx--side-nav__overlay-active {
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
     background-color: rgba(22, 22, 22, 0.5);
     background-color: var(--cds-overlay-01, rgba(22, 22, 22, 0.5));
@@ -22370,7 +22370,7 @@ body hr {
 
 #maincontent {
   padding-bottom: 23rem;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .container {
@@ -25397,7 +25397,7 @@ main[data-page='add-ons-code-cloud-header'] .cloud-header>div {
   background-color: #8d8d8d;
   background-color: var(--cds-ui-04, #8d8d8d);
   width: 200px;
-  height: calc(100vh - 86px);
+  height: calc(100dvh - 86px);
   bottom: 0;
   left: 0;
   z-index: 8000;
