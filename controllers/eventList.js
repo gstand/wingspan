@@ -33,7 +33,7 @@ document.addEventListener('contextProvided', () => {
     } else if (type !== 'open') { // in case of open type precontext above alr removed this so no need to do it twice, error will get thrown
         document.getElementById('createEvent').remove()
     }
-    if (context.myEventList.events) {
+    if (context.myEventList.events.length > 0) {
         const eventElements = context.myEventList.events.map((event) => {
             const htmlString = `<tr>
             <td>
@@ -120,6 +120,14 @@ document.addEventListener('contextProvided', () => {
         eventElements.forEach((element) => { table.appendChild(element) })
         document.querySelector('#eventTable table').classList.remove('bx--skeleton')
     } else {
-        throwContextError('No events found/returned')
+        if (type === 'open') {
+            noEventElement = new DOMParser().parseFromString(`<table><tbody><tr><td colspan="3"><i>No open events found</i></td></tr></tbody></table>`, 'text/html').querySelector('tr')
+            const table = document.getElementById('eventRowContainer')
+            table.innerHTML = ''
+            table.appendChild(noEventElement)
+            document.querySelector('#eventTable table').classList.remove('bx--skeleton')
+        } else {
+            throwContextError('No events found/returned')
+        }
     }
 })
