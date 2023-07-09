@@ -117,6 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.prepend(progressBar);
 });
 
+window.addEventListener("beforeunload",() => {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.id = 'progress-bar';
+    const progressBarValue = document.createElement('div');
+    progressBarValue.className = 'progress-bar-value';
+    progressBar.appendChild(progressBarValue);
+    document.body.prepend(progressBar);
+});
+
 // const apiManifest = await (async () => {
 //     const response = await fetch('common/api_manifest.php', {
 //         method: 'POST',
