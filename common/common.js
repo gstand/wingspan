@@ -27,6 +27,12 @@
         document.head.appendChild(script);
         script.onload = () => {
             document.addEventListener('contextProvided', () => {
+                if (document.getElementById('modal-devmode')) {
+                    document.getElementById('modal-devmode').remove();
+                }
+                if (document.getElementById('devmodeButton')) {
+                    document.getElementById('devmodeButton').remove();
+                }
                 document.getElementById('UserIP').parentElement.removeAttribute('hidden')
                 const devmodeModalHTML = `<div data-modal id="modal-devmode" class="bx--modal " role="dialog"
                 aria-modal="true" aria-labelledby="modal-devmode-label" aria-describedby="modal-devmode-heading"
