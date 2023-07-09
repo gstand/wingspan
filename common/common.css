@@ -1,5 +1,6 @@
 @import url(carbon.css);
 
+/* #region global styles */
 #teacherMenuHeader,
 #adminMenuHeader,
 #teacherMenuSide,
@@ -72,14 +73,16 @@ table.bx--skeleton span {
   animation: indeterminateAnimation 2s infinite linear;
   transform-origin: 0% 50%;
 }
+
 .progress-bar.error .progress-bar-value {
   display: none;
 }
 
-.bx--inline-notification--error {
+.bx--inline-notification {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
+  z-index: 999999999999;
 }
 
 @keyframes indeterminateAnimation {
@@ -114,17 +117,51 @@ i {
 .bx--toggle-input:checked+.bx--toggle-input__label>.bx--toggle__switch::before {
   background-color: var(--cds-ui-04, #8d8d8d) !important;
 }
+
 .bx--loading-overlay {
   flex-direction: column;
 }
-#devModeContextRaw .string { color: green !important; }
-#devModeContextRaw .number { color: darkorange !important; }
-#devModeContextRaw .boolean { color: blue !important; }
-#devModeContextRaw .null { color: magenta !important; }
-#devModeContextRaw .key { color: red !important; }
-#devmodeButton {float: right; position: relative; top: 1rem;}
 
-/* hotfix 1 -- */
+#devModeContextRaw .string {
+  color: green !important;
+}
+
+#devModeContextRaw .number {
+  color: darkorange !important;
+}
+
+#devModeContextRaw .boolean {
+  color: blue !important;
+}
+
+#devModeContextRaw .null {
+  color: magenta !important;
+}
+
+#devModeContextRaw .key {
+  color: red !important;
+}
+
+#devmodeButton {
+  float: right;
+  position: relative;
+  top: 1rem;
+}
+body {
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--cds-text-01, #161616);
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232300;
+}
+/* #endregion */
+/* #region hotfix 1 -- */
 /* for some reason the CC library doesnt have a native responsive sidemenu adaptation for the UI shell header so this is my solution to that */
 /* some user contexts/flows may have further menus or surfaces that dictate a dedicated sidebar but this will suffice for now */
 @media (min-width: 66rem) {
@@ -137,31 +174,18 @@ i {
   display: block;
 }
 
-/* -- */
-
-/* hotfix 2 -- */
+/* #endregion -- */
+/* #region hotfix 2 -- */
 /* fix the user selection control being squished */
 .bx--header__menu-trigger {
   margin-right: 0 !important;
 }
 
-/* -- */
-
-body {
-  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !important;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: var(--cds-text-01, #161616);
-    transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #23232300;
-}
-
+/* #endregion -- */
 /* #region add theming support with html theme tag */
-:root, :root[data-theme="white"], .bx--overflow-menu-options {
+:root,
+:root[data-theme="white"],
+.bx--overflow-menu-options {
   --cds-interactive-01: #ee7623;
   --cds-interactive-02: #393939;
   --cds-interactive-03: #ee7623;
@@ -1078,21 +1102,24 @@ input:-webkit-autofill:active{
 }
 
 /* #endregion */
-
 /* #region login page styles */
 .bx--text-input__field-wrapper .bx--text-input--password__visibility__toggle.bx--tooltip__trigger {
   border-bottom: none !important;
   display: -webkit-inline-box;
 }
+
 .bx--text-input__field-wrapper .bx--text-input--password__visibility__toggle.bx--tooltip__trigger svg {
   margin-left: -8px;
 }
+
 .loginContainer:has(.bx--text-input__field-wrapper .bx--text-input--password__visibility__toggle.bx--tooltip__trigger:hover) {
   overflow: visible !important;
 }
+
 .loginContainer:has(.bx--text-input__field-wrapper .bx--text-input--password__visibility__toggle.bx--tooltip__trigger:hover) #LoginWait {
   visibility: hidden !important;
 }
+
 .leftPanelLogin {
   height: calc(100dvh - 3rem);
   margin-top: 3rem;
@@ -1101,101 +1128,132 @@ input:-webkit-autofill:active{
   padding: 1.5rem 1rem;
   /* overflow: hidden; */
 }
+
 .loginPanelHeader {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--cds-ui-04, #dfe3e6);
   min-height: 4.563rem;
 }
-.loginPanelHeader p, .help {
+
+.loginPanelHeader p,
+.help {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--cds-text-02, #5a6872);
 }
+
 #loginSubtitle {
   display: none;
 }
+
 #loginSubtitle.show {
   display: block;
 }
+
 .loginSteps {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--cds-ui-04, #dfe3e6);
-  margin-bottom: 1rem;
+  padding-top: 1rem;
   display: flex;
   overflow-x: clip;
 }
+
 .loginSteps .loginStep {
   transition: left 340ms cubic-bezier(0.2, 0.2, 0.38, 0.9);
   width: 18rem;
   flex-shrink: 0;
   position: relative;
 }
+
 .loginSteps .loginStep.right {
   left: 20rem;
   background-color: red;
 }
+
 .loginSteps .loginStep.middle {
   left: 0rem;
   height: inherit;
 }
-.loginSteps .loginStep.left ~ .loginStep.middle {
+
+.loginSteps .loginStep.left~.loginStep.middle {
   left: -18rem;
 }
+
 .loginSteps .loginStep.left {
   left: -20rem;
 }
+
 .loginSteps .bx--label {
   padding: 0 !important;
   width: 100%;
 }
+
 .loginStep .bx--text-input-wrapper {
   padding-bottom: 1rem;
 }
+
+.loginStep .bx--checkbox-wrapper {
+  padding: 1rem 0 !important;
+  border-bottom: 1px solid var(--cds-ui-04, #dfe3e6);
+  margin-bottom: 1rem !important;
+}
+
 .loginStep .bx--btn {
   width: 100%;
 }
+
 .loginSteps .bx--label #helpToggle {
   float: right;
   font-size: 0.75rem;
 }
+
 .bx--text-input__field-wrapper:not([data-invalid]) .bx--text-input__invalid-icon {
   display: none;
 }
-.bx--text-input__field-wrapper:not([data-invalid]) ~ .bx--form-requirement {
+
+.bx--text-input__field-wrapper:not([data-invalid])~.bx--form-requirement {
   display: none;
 }
+
 .bx--form-requirement {
   max-height: unset;
 }
+
 #loginButtonContainer {
   height: 40px;
   width: 100%;
 }
+
 #loginButtonContainer #loading {
   display: none;
 }
+
 #loginButtonContainer.load #loading {
   display: block;
 }
+
 #loginButtonContainer.load #loginButton {
   display: none;
 }
+
 #loginButtonContainer .bx--inline-loading__animation {
   display: inline-block;
 }
+
 #loginButtonContainer .bx--inline-loading .bx--inline-loading__text {
   width: fit-content;
   display: inline-block;
   position: relative;
   bottom: 12px;
 }
+
 #loginButtonContainer .bx--inline-loading .bx--inline-loading__text[hidden] {
   display: none;
 }
+
 #loginButtonContainer .bx--inline-loading {
   position: relative;
   top: 4px;
 }
+
 .loginBG {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/1.webp);
   background-repeat: no-repeat;
@@ -1203,6 +1261,7 @@ input:-webkit-autofill:active{
   background-position: top center;
   background-attachment: fixed;
 }
+
 .loginContainer {
   background-color: var(--cds-ui-02);
   /* height: calc(100dvh - 3rem - 64px); */
@@ -1215,17 +1274,20 @@ input:-webkit-autofill:active{
   transform: translate(-50%, -50%);
   overflow: hidden;
 }
+
 .bx--label.login-label-hotfix {
   padding: 0 1rem;
   margin: 0;
   margin-bottom: 4px;
 }
+
 .bx--text-input--password__visibility__toggle.login-hotfix {
   border-bottom: 1px solid #8d8d8d !important;
   padding: 0 .5rem !important;
   position: absolute;
   right: 0.75rem;
 }
+
 .bx--password-input.login-hotfix {
   padding-right: 0.5rem !important;
 }
@@ -1246,27 +1308,37 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   font-weight: normal;
   border: none;
 }
-.loginBG #appearanceToggle.dark > svg.dark,
-.loginBG #appearanceToggle.dark > svg.system {
+
+.loginBG #appearanceToggle.dark>svg.dark,
+.loginBG #appearanceToggle.dark>svg.system {
   display: none;
 }
-.loginBG #appearanceToggle.light > svg.light,
-.loginBG #appearanceToggle.light > svg.system {
+
+.loginBG #appearanceToggle.light>svg.light,
+.loginBG #appearanceToggle.light>svg.system {
   display: none;
 }
-.loginBG #appearanceToggle.system > svg.light,
-.loginBG #appearanceToggle.system > svg.dark {
+
+.loginBG #appearanceToggle.system>svg.light,
+.loginBG #appearanceToggle.system>svg.dark {
   display: none;
 }
+.bx--loading-overlay {
+  background-color: rgba(#39393999);
+}
+
 /* #endregion */
 /* #region home page styles */
-#adminLinks, #teacherLinks {
+#adminLinks,
+#teacherLinks {
   display: none;
 }
+
 .homeFloater {
   width: fit-content;
   height: calc(100dvh - 3rem);
 }
+
 .bgImages {
   position: absolute;
   top: 0;
@@ -1275,6 +1347,7 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   height: 100dvh;
   z-index: -5;
 }
+
 .bgImages::after {
   content: " ";
   z-index: 0;
@@ -1286,25 +1359,30 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   height: 100dvh;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .bgImages img {
   display: none;
   width: 100dvw;
   height: 100dvh;
   object-fit: cover;
 }
+
 .bgImages img.show {
   display: block;
 }
+
 @media (max-width: 66rem) {
   .homeFloater {
-      width: 100dvw;
+    width: 100dvw;
   }
 }
+
 /* #endregion */
 /* #region event page styles */
 .bx--table-header-label.event-table-hotfix {
   margin: 0 1rem !important;
 }
+
 .top .inlineSwitcher {
   width: 180px;
   float: right;
@@ -1319,12 +1397,14 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   text-overflow: ellipsis;
 }
 
-.top #mobileEventName, .top #mobileTitle {
+.top #mobileEventName,
+.top #mobileTitle {
   display: none;
   text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
 }
+
 .secondLevelContainer {
   background-color: var(--cds-ui-01, #ffffff);
   margin-top: -.5rem;
@@ -1355,21 +1435,25 @@ button.bx--btn .bx--btn__icon.login-hotfix {
 .detailsTileContainer .bx--tile:nth-child(4n+1) {
   margin-left: 0;
 }
+
 .detailsTileContainer .bx--tile:nth-child(4n) {
   margin-right: 0;
 }
-.detailsTileContainer .bx--tile > p, .detailsTileContainer .bx--tile > h2 {
+
+.detailsTileContainer .bx--tile>p,
+.detailsTileContainer .bx--tile>h2 {
   display: inline-flex;
 }
 
-.detailsTileContainer .bx--tile > h2 {
+.detailsTileContainer .bx--tile>h2 {
   margin-right: .5rem;
   padding-right: .5rem;
   /* border-right: 1px solid #ccc; */
   height: 100%;
   /* max-width: 12rem; */
 }
-.detailsTileContainer .bx--tile > p {
+
+.detailsTileContainer .bx--tile>p {
   margin-left: auto;
   /* flex-grow: 100; */
   text-align: right;
@@ -1382,60 +1466,82 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   margin-bottom: 1rem;
   overflow-x: scroll;
 }
-#actions .actions{
+
+#actions .actions {
   float: right;
   position: relative;
 }
-#detailsPanel .tileWide > h5 {
+
+#detailsPanel .tileWide>h5 {
   display: inline-block;
   position: relative;
   top: .25rem;
 }
-#sessionsPanel .bx--child-row-inner-container > .bx--link {
+
+#sessionsPanel .bx--child-row-inner-container>.bx--link {
   cursor: pointer !important;
   pointer-events: all !important;
   touch-action: manipulation !important;
   /* background-color: red; */
 }
+
 .bx--content:has(.top) {
   position: fixed;
   width: 100dvw;
   top: 0;
   z-index: 10;
 }
-#sessionsPanel .bx--data-table-header, .bx--table-toolbar {
+
+#sessionsPanel .bx--data-table-header,
+.bx--table-toolbar {
   background: var(--cds-ui-01);
 }
+
 #sessionsPanel .bx--toolbar-content .bx--search .bx--search-input {
   padding-left: 3rem !important;
 }
+
 #sessionsPanel .bx--toolbar-search-container-persistent .bx--search .bx--search-magnifier {
   padding-left: 0 !important;
 }
-#sessionsPanel .bx--toolbar-search-container-persistent .bx--search, .bx--toolbar-content .bx--search .bx--search-input {
+
+#sessionsPanel .bx--toolbar-search-container-persistent .bx--search,
+.bx--toolbar-content .bx--search .bx--search-input {
   height: 3rem;
 }
 
 #sessionsPanel .bx--toolbar-search-container-persistent .bx--search {
-  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9),outline 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), outline 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
 }
+
 #sessionsPanel .bx--toolbar-search-container-persistent .bx--search:hover {
   background-color: var(--cds-ui-02);
 }
-#sessionsPanel .bx--toolbar-content .bx--search .bx--search-input {padding-left: 1rem;}
-#sessionsPanel .bx--search-magnifier {padding-left: 1rem;}
-#sessionsPanel .bx--data-table td, #sessionsPanel .bx--data-table tbody th {
+
+#sessionsPanel .bx--toolbar-content .bx--search .bx--search-input {
+  padding-left: 1rem;
+}
+
+#sessionsPanel .bx--search-magnifier {
+  padding-left: 1rem;
+}
+
+#sessionsPanel .bx--data-table td,
+#sessionsPanel .bx--data-table tbody th {
   border-top: none;
   background-color: var(--cds-ui-02);
 }
+
 #sessionsPanel .bx--toolbar-search-container-persistent .bx--search-input:hover:not([disabled]) {
   background-color: unset;
 }
-#sessionsPanel .bx--data-table tbody tr:hover td, .bx--data-table tbody tr:hover th {
+
+#sessionsPanel .bx--data-table tbody tr:hover td,
+.bx--data-table tbody tr:hover th {
   border-top: none;
 }
 
-.bx--parent-row.bx--expandable-row ~ .bx--expandable-row.bx--expandable-row--hidden > td.eventExpandRow {
+.bx--parent-row.bx--expandable-row~.bx--expandable-row.bx--expandable-row--hidden>td.eventExpandRow {
   padding: 1rem !important;
   padding-bottom: 0;
   background-color: var(--cds-ui-02);
@@ -1446,19 +1552,19 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   color: var(--cds-link-01, #ee7623) !important;
 }
 
-#sessionsPanel .bx--child-row-inner-container > .bx--data-table-container > table > thead > tr > th {
+#sessionsPanel .bx--child-row-inner-container>.bx--data-table-container>table>thead>tr>th {
   padding: 0 !important;
 }
 
-#sessionsPanel .bx--child-row-inner-container > .bx--data-table-container > table > thead > tr > th > button {
+#sessionsPanel .bx--child-row-inner-container>.bx--data-table-container>table>thead>tr>th>button {
   padding-left: .5rem !important;
 }
 
-#sessionsPanel .bx--child-row-inner-container > .bx--data-table-container > table > thead > tr > th.bx--table-column-menu{
+#sessionsPanel .bx--child-row-inner-container>.bx--data-table-container>table>thead>tr>th.bx--table-column-menu {
   background: var(--cds-ui-01);
 }
 
-#sessionsPanel .bx--child-row-inner-container > .bx--data-table-container > table > tbody > tr > td {
+#sessionsPanel .bx--child-row-inner-container>.bx--data-table-container>table>tbody>tr>td {
   padding: .5rem !important;
 }
 
@@ -1466,7 +1572,7 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   background: var(--cds-ui-02);
 }
 
-.eventExpandRow .bx--child-row-inner-container > .bx--structured-list {
+.eventExpandRow .bx--child-row-inner-container>.bx--structured-list {
   margin-bottom: 0;
 }
 
@@ -1476,120 +1582,143 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   width: 32px;
 }
 
-.bx--expandable-row--hover + .eventExpandRow:hover {
+.bx--expandable-row--hover+.eventExpandRow:hover {
   background: var(--cds-ui-02);
 }
 
-.eventExpandRow > div > section > div > div.teacherTutor {
+.eventExpandRow>div>section>div>div.teacherTutor {
   display: none;
 }
-.eventExpandRow.showTutor > div > section > div > div.teacherTutor {
+
+.eventExpandRow.showTutor>div>section>div>div.teacherTutor {
   display: table-row;
 }
+
 #showTeacherTutor {
   padding-top: .25rem;
 }
 
-.bx--parent-row.bx--expandable-row ~ .bx--expandable-row.bx--expandable-row--hidden > td.eventExpandRow.lastRowNoSpacingRah {
+.bx--parent-row.bx--expandable-row~.bx--expandable-row.bx--expandable-row--hidden>td.eventExpandRow.lastRowNoSpacingRah {
   padding-bottom: 0 !important;
 }
 
-.bx--parent-row.bx--expandable-row + .bx--expandable-row.bx--expandable-row--hidden > td.eventExpandRow.lastRowNoSpacingRah {
+.bx--parent-row.bx--expandable-row+.bx--expandable-row.bx--expandable-row--hidden>td.eventExpandRow.lastRowNoSpacingRah {
   padding-bottom: 1rem !important;
 }
 
 @media (max-width: 66rem) {
   .top #titleName {
-      display: none;
+    display: none;
   }
-  .top #mobileEventName, .top #mobileTitle {
-      display: block;
+
+  .top #mobileEventName,
+  .top #mobileTitle {
+    display: block;
   }
+
   .top .inlineSwitcher {
-      margin-top: .25rem;
-      width: unset;
-      float: unset;
+    margin-top: .25rem;
+    width: unset;
+    float: unset;
   }
-  .bx--content:has(.top > #mobileEventName):has(.top > div[data-content-switcher]) ~ .secondLevelContainer {
+
+  .bx--content:has(.top > #mobileEventName):has(.top > div[data-content-switcher])~.secondLevelContainer {
     min-height: calc(100dvh - 15.4rem);
     margin-top: 15.4rem;
   }
-  .bx--content:has(.top > #mobileEventName) ~ .secondLevelContainer {
+
+  .bx--content:has(.top > #mobileEventName)~.secondLevelContainer {
     min-height: calc(100dvh - 12.9rem);
-      margin-top: 12.9rem;
+    margin-top: 12.9rem;
   }
-  .bx--content:has(.top > #mobileEventName):has(.top > button) ~ .secondLevelContainer {
+
+  .bx--content:has(.top > #mobileEventName):has(.top > button)~.secondLevelContainer {
     min-height: calc(100dvh - 16.15rem);
-      margin-top: 16.15rem;
+    margin-top: 16.15rem;
   }
-  
+
   .secondLevelContainer {
-      min-height: calc(100dvh - 12.9rem);
-      margin-top: 12.9rem;
-      width: 100dvw;
+    min-height: calc(100dvh - 12.9rem);
+    margin-top: 12.9rem;
+    width: 100dvw;
   }
+
   .detailsTileContainer .bx--tile {
-      margin: .5rem 0;
-      width: unset;
-      display: block;
+    margin: .5rem 0;
+    width: unset;
+    display: block;
   }
-  
+
   .detailsTileContainer .bx--tile:nth-child(4n+1) {
-      margin-left: unset;
+    margin-left: unset;
   }
+
   .detailsTileContainer .bx--tile:nth-child(4n) {
-      margin-right: unset;
+    margin-right: unset;
   }
+
   .detailsTileContainer {
-      display: block;
-      margin: 1rem 0;
+    display: block;
+    margin: 1rem 0;
   }
-  .detailsTileContainer .bx--tile > h2 {
-      border-right: none;
-      padding-right: unset;
-      margin-right: .25rem;
-      max-width: unset;
+
+  .detailsTileContainer .bx--tile>h2 {
+    border-right: none;
+    padding-right: unset;
+    margin-right: .25rem;
+    max-width: unset;
   }
-  .detailsTileContainer .bx--tile > p {
-      margin-left: unset;
-      text-align: unset;
+
+  .detailsTileContainer .bx--tile>p {
+    margin-left: unset;
+    text-align: unset;
   }
+
   .detailsTileContainer .bx--tile:nth-child(4n+1) {
-      margin-top: 0;
+    margin-top: 0;
   }
+
   .detailsTileContainer .bx--tile:nth-child(4n) {
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
+
   #actions .actions {
-      float: unset;
-      position: unset;
+    float: unset;
+    position: unset;
   }
-  #actions .actions > button {
-      min-width: calc(100dvw - 6rem);
-      margin-top: .175rem;
-      margin-bottom: .175rem;
+
+  #actions .actions>button {
+    min-width: calc(100dvw - 6rem);
+    margin-top: .175rem;
+    margin-bottom: .175rem;
   }
-  #actions .actions > button:nth-child(4n+1) {
-      margin-top: 0;
+
+  #actions .actions>button:nth-child(4n+1) {
+    margin-top: 0;
   }
-  #actions .actions > button:nth-child(4n) {
-      margin-bottom: 0;
+
+  #actions .actions>button:nth-child(4n) {
+    margin-bottom: 0;
   }
-  #detailsPanel .tileWide > h5 {
-      display: none;
+
+  #detailsPanel .tileWide>h5 {
+    display: none;
   }
+
   #sessionsPanel .bx--data-table-container {
-      width: 100%;
+    width: 100%;
   }
+
   #sessionsPanel {
-      overflow-x: scroll;
+    overflow-x: scroll;
   }
 }
+
 /* #endregion */
 /* #region event list page styles */
 #createEvent {
   display: none;
-  float:right;
+  float: right;
 }
 
 #eventTable {
@@ -1620,11 +1749,12 @@ button.bx--btn .bx--btn__icon.login-hotfix {
 
 @media (max-width: 66rem) {
   .secondLevelContainer:has(#eventTable) {
-      min-height: calc(100dvh - 12.45rem);
-      min-width: 100dvh;
-      width: fit-content;
+    min-height: calc(100dvh - 12.45rem);
+    min-width: 100dvh;
+    width: fit-content;
   }
 }
+
 /* #endregion */
 /* #region event owner page styles */
 .IAC--template__eventOwnerPage .bx--tile {
@@ -1638,12 +1768,17 @@ button.bx--btn .bx--btn__icon.login-hotfix {
 .IAC--template__eventOwnerPage .bx--tile {
   cursor: pointer;
 }
+
 .IAC--template__eventOwnerPage .bx--tile:hover {
-background-color: var(--cds-hover-ui, #e5e5e5);
+  background-color: var(--cds-hover-ui, #e5e5e5);
 }
+
 /* #endregion */
 /* #region event pass page styles */
-.IAC--template__eventPassPage .bx--tile:not(.detailTile) svg#icon path, .bx--tile:not(.detailTile) svg#icon polygon {
+.IAC--template__eventPassPage .bx--tile:not(.detailTile) svg#icon path,
+.bx--tile:not(.detailTile) svg#icon polygon,
+.IAC--template__eventWorkshopPage .bx--tile svg#icon path,
+.bx--tile svg#icon polygon {
   fill: var(--cds-text-01) !important;
 }
 
@@ -1656,7 +1791,7 @@ background-color: var(--cds-hover-ui, #e5e5e5);
   margin-left: 3rem;
 }
 
-.IAC--template__eventPassPage .bx--tile:not(.detailTile) > h1 {
+.IAC--template__eventPassPage .bx--tile:not(.detailTile)>h1 {
   position: absolute;
   left: -3rem;
   max-width: 3rem;
@@ -1668,38 +1803,90 @@ background-color: var(--cds-hover-ui, #e5e5e5);
 .IAC--template__eventPassPage .eventName {
   display: inline-block;
 }
+
 .IAC--template__eventPassPage .time {
-  float:right;
+  float: right;
 }
 
-.IAC--template__eventPassPage .bx--tile:not(.detailTile) svg {
+.IAC--template__eventPassPage .bx--tile:not(.detailTile) svg,
+.IAC--template__eventWorkshopPage .bx--tile svg {
   position: relative;
   top: 2px;
 }
 
 .IAC--template__eventPassPage .bx--tile:not(.detailTile):last-of-type {
-  margin-bottom: 0!important;
+  margin-bottom: 0 !important;
 }
-.IAC--template__eventPassPage .secondLevelContainer > i {
+
+.IAC--template__eventPassPage .secondLevelContainer>i {
   text-align: center;
   display: block;
 }
+
 .top button {
   float: right;
 }
-h2 ~ button {
+
+h2~button {
   float: right;
 }
-h4 > svg {
+
+h4>svg {
   position: relative;
-top: 3px;
+  top: 3px;
+}
+
+@media (max-width: 66rem) {
+  .top>button {
+    float: unset;
+    min-width: calc(100vw - 4rem);
+    width: calc(100vw - 4rem);
+    margin-top: .5rem;
+  }
+}
+
+/* #endregion */
+/* #region event workshop page styles */
+.IAC--template__eventWorkshopPage .bx--tile {
+  background: var(--cds-ui-02, #ffffff);
+  margin-bottom: 1rem;
+  width: calc(100vw - 4rem);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.IAC--template__eventWorkshopPage .bx--tile>h2 {
+  display: inline-block;
+}
+
+.IAC--template__eventWorkshopPage .bx--tile>button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.attdOptions {
+  display: inline-block;
+  margin-right: .5rem;
+}
+.attd-note {
+  margin-top: .5rem;
+}
+#sessionRowTarget .bx--radio-button-group {
+  margin-top: 0;
+}
+#sessionRowTarget td:has(.bx--radio-button-group) {
+  width: 21.5rem;
 }
 @media (max-width: 66rem) {
-  .top > button {
-      float: unset;
-      min-width: calc(100vw - 4rem);
-      width: calc(100vw - 4rem);
-      margin-top: .5rem;
+  .dataTableContainer {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .IAC--template__eventWorkshopPage .bx--tile>button {
+    position: unset;
+    float: unset;
+    width: 100%;
+    min-width: 100%;
   }
 }
 
