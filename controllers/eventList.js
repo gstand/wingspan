@@ -1,6 +1,12 @@
 window.addEventListener('load', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    if (type === 'open') {
+        document.getElementById('titleName').innerText = 'Open Events';
+        document.getElementById('createEvent').remove();
+    }
     await getUserSession();
-    const response = await fetch('//' + window.location.host + '/scripts/php/event-listWs.php');
+    const response = await fetch('//' + window.location.host + '/scripts/php/event-listWs.php' + (type === "open" ? '?type=Open' : ''));
     try {
         var json = await response.json();
     } catch (error) {
@@ -20,9 +26,11 @@ window.addEventListener('load', async () => {
     document.getElementById('progress-bar').remove();
 })
 document.addEventListener('contextProvided', () => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
     if (context.myEventList.allowAdd) {
         document.getElementById('createEvent').style.display = 'inline';
-    } else {
+    } else if (type !== 'open') { // in case of open type precontext above alr removed this so no need to do it twice, error will get thrown
         document.getElementById('createEvent').remove()
     }
     if (context.myEventList.events) {
