@@ -150,12 +150,12 @@ const login = async (e) => {
         document.getElementById('loginButtonContainer').classList.add('load');
         /** @type {LoginStatus} */
         let login;
-        const response = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login' + (document.getElementById('persist').checked ? '&persist=yes' : ''), {
+        const response = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "user=" + encodeURIComponent(document.getElementById('username').value) + "&pass=" + encodeURIComponent(document.getElementById('password').value)
+            body: "user=" + encodeURIComponent(document.getElementById('username').value) + "&pass=" + encodeURIComponent(document.getElementById('password').value) + (document.getElementById('persist').checked ? '&persist=yes' : '')
         });
         /** @type {LoginResponse} */
         const data = await response.json();
