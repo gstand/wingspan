@@ -30,7 +30,7 @@ window.addEventListener('load', async () => {
         </div>`
         const loadingElement = new DOMParser().parseFromString(loadingHTML, 'text/html').body.firstChild;
         document.body.prepend(loadingElement);
-        const logoutResponse = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=login')
+        const logoutResponse = await fetch('//' + window.location.host + '/scripts/php/loginWs.php?action=logout')
         try {
             var json = await logoutResponse.json();
         } catch (e) {
