@@ -132,6 +132,11 @@ window.addEventListener("beforeunload",() => {
     progressBar.appendChild(progressBarValue);
     document.body.prepend(progressBar);
 });
+window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+        document.getElementById('progress-bar').remove();
+    }
+})
 
 // const apiManifest = await (async () => {
 //     const response = await fetch('common/api_manifest.php', {
