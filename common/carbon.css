@@ -22317,8 +22317,8 @@ a.bx--navigation-link:focus {
   background: #ffffff;
   background: var(--cds-ui-02, #ffffff);
   padding: 2rem;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  /* -webkit-transform: translate3d(0, 0, 0); */
+  /* transform: translate3d(0, 0, 0); */
   will-change: margin-left;
 }
 
