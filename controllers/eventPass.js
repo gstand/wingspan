@@ -52,6 +52,7 @@ document.addEventListener('contextProvided', () => {
     document.getElementById('eventRegWindow').innerHTML = eventRegTimeString;
     document.getElementById('eventRegWindow').classList.remove('bx--skeleton__text')
     Array.from(document.querySelectorAll('.secondLevelContainer > .bx--tile')).forEach((tile) => {tile.remove()});
+    document.getElementById('modifyReg').addEventListener('click', () => {window.location.href = 'EventRegistration.html?id=' + context.myEvent.id});
     if (context.myEvent.sessions.length <= 0) {
         const message = document.createElement('i');
         message.innerHTML = 'You have not registered for this event yet. Please use the modify registration button above to register for this event.';
