@@ -120,6 +120,7 @@ i {
 
 .bx--loading-overlay {
   flex-direction: column;
+  background-color: #39393999;
 }
 
 #devModeContextRaw .string {
@@ -147,6 +148,7 @@ i {
   position: relative;
   top: 1rem;
 }
+
 body {
   font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !important;
 }
@@ -160,6 +162,7 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   box-shadow: inset 0 0 20px 20px #23232300;
 }
+
 /* #endregion */
 /* #region hotfix 1 -- */
 /* for some reason the CC library doesnt have a native responsive sidemenu adaptation for the UI shell header so this is my solution to that */
@@ -1323,9 +1326,6 @@ button.bx--btn .bx--btn__icon.login-hotfix {
 .loginBG #appearanceToggle.system>svg.dark {
   display: none;
 }
-.bx--loading-overlay {
-  background-color: rgba(#39393999);
-}
 
 /* #endregion */
 /* #region home page styles */
@@ -1395,6 +1395,7 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   max-width: calc(100dvw - 4rem - 183px - 1rem);
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .top #mobileEventName,
@@ -1800,12 +1801,17 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   white-space: nowrap;
 }
 
-.IAC--template__eventPassPage .eventName {
+.eventName {
   display: inline-block;
 }
 
-.IAC--template__eventPassPage .time {
+.time {
   float: right;
+}
+
+i.time {
+  position: relative;
+  bottom: -8px;
 }
 
 .IAC--template__eventPassPage .bx--tile:not(.detailTile) svg,
@@ -1818,7 +1824,7 @@ button.bx--btn .bx--btn__icon.login-hotfix {
   margin-bottom: 0 !important;
 }
 
-.IAC--template__eventPassPage .secondLevelContainer>i {
+.IAC--template__eventPassPage .secondLevelContainer>i, .IAC--template__eventRegisterPage #StartPage>i {
   text-align: center;
   display: block;
 }
@@ -1864,24 +1870,30 @@ h4>svg {
   top: 1rem;
   right: 1rem;
 }
+
 .attdOptions {
   display: inline-block;
   margin-right: .5rem;
 }
+
 .attd-note {
   margin-top: .5rem;
 }
+
 #sessionRowTarget .bx--radio-button-group {
   margin-top: 0;
 }
+
 #sessionRowTarget td:has(.bx--radio-button-group) {
   width: 21.5rem;
 }
+
 @media (max-width: 66rem) {
   .dataTableContainer {
     width: 100%;
     overflow-x: scroll;
   }
+
   .IAC--template__eventWorkshopPage .bx--tile>button {
     position: unset;
     float: unset;
@@ -1890,4 +1902,472 @@ h4>svg {
   }
 }
 
+/* #endregion */
+/* #region event register page styles */
+.IAC--template__eventRegisterPage .SessionContents>i {
+  margin-top: 6rem;
+  display: block;
+  text-align: center;
+}
+.inlineSwitcher {
+  float: right;
+  position: relative;
+  top: .3rem;
+}
+
+.leftBar {
+  background-color: var(--cds-ui-02, #ffffff);
+  position: fixed;
+  left: 0;
+  width: 12rem;
+  height: calc(100dvh - 10.25rem);
+  padding-left: 2rem;
+  overflow-y: auto;
+}
+
+.IAC--template__eventRegisterPage .bx--progress--vertical .bx--progress-optional {
+  margin-top: auto !important;
+  position: initial !important;
+  margin-left: 2.25rem !important;
+}
+.IAC--template__eventRegisterPage .bx--progress-label {
+  height: fit-content;
+}
+
+.IAC--template__eventRegisterPage .secondLevelContainer {
+  margin-left: 12rem;
+  width: calc(100dvw - 12rem);
+}
+
+.IAC--template__eventRegisterPage .detailsTileContainer {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.IAC--template__eventRegisterPage .bx--tile svg#icon path,
+.IAC--template__eventRegisterPage .bx--tile svg#icon polygon {
+  fill: var(--cds-text-01) !important;
+}
+
+.IAC--template__eventRegisterPage .bx--tile {
+  background: var(--cds-ui-02, #ffffff);
+  margin-bottom: 1rem;
+  width: calc(100dvw - 19rem);
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3rem;
+}
+
+.IAC--template__eventRegisterPage #summaryPage .bx--tile:hover:not(.no-hover) {
+  background-color: var(--cds-hover-ui);
+  cursor: pointer;
+}
+
+.IAC--template__eventRegisterPage #showTeacherTutor {
+  padding-top: .25rem;
+}
+
+:root[theme="g100"] .IAC--template__eventRegisterPage .bx--progress-step--incomplete .bx--progress-line,
+:root[theme="g90"] .IAC--template__eventRegisterPage .bx--progress-step--incomplete .bx--progress-line {
+  background-color: var(--cds-ui-01, #e0e0e0) !important;
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list-td>.bx--radio-button-wrapper {
+  width: 1.125rem
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list-td:has(.bx--radio-button-wrapper) {
+  width: 1.125rem;
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list-td .bx--radio-button__appearance {
+  margin-right: 0 !important;
+}
+
+.IAC--template__eventRegisterPage h4>svg {
+  position: relative;
+  top: 3px;
+}
+
+.IAC--template__eventRegisterPage .SessionContents {
+  display: none;
+  height: calc(100dvh - 17.75rem);
+  overflow: auto;
+  width: calc(100dvw - 16rem);
+}
+
+
+.IAC--template__eventRegisterPage .SessionContents.show {
+  display: block;
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list {
+  overflow: auto !important;
+  margin-top: 6rem;
+}
+
+.IAC--template__eventRegisterPage #StartPage h2 {
+  display: inline-block;
+}
+.IAC--template__eventRegisterPage .bottomNavigatorButtons {
+  position: fixed;
+  bottom: 2rem;
+  width: calc(100dvw - 4rem - 12rem)
+}
+
+.IAC--template__eventRegisterPage #pagePrev {
+  padding-left: 50px;
+  padding-right: 12px;
+}
+
+.IAC--template__eventRegisterPage #pagePrev .bx--btn__icon {
+  right: unset !important;
+  left: 1rem !important;
+}
+
+.IAC--template__eventRegisterPage #pageNext {
+  float: right;
+}
+
+.IAC--template__eventRegisterPage .SessionContents .bx--structured-list {
+  margin-bottom: 0 !important;
+}
+
+.IAC--template__eventRegisterPage .SessionContents:not(#StartPage)>h2 {
+  background-color: var(--cds-ui-01, #ffffff);
+  width: calc(100dvw - 16rem);
+}
+
+.IAC--template__eventRegisterPage #summaryPage>h4 {
+  top: 14.25rem !important;
+  z-index: 1;
+  background-color: var(--cds-ui-01, #ffffff);
+  padding-bottom: .6rem;
+}
+
+.IAC--template__eventRegisterPage #tileSurface{
+  overflow-y: auto;
+  margin-top: 5rem;
+}
+
+.IAC--template__eventRegisterPage .SessionContents>h4 {
+  background-color: var(--cds-ui-01, #ffffff);
+  width: calc(100dvw - 16rem);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.IAC--template__eventRegisterPage .leftBar .mobileExpand{
+  display: none;
+}
+
+.IAC--template__eventRegisterPage .bx--dropdown--inline {
+  width: 18rem !important;
+}
+.IAC--template__eventRegisterPage .bx--progress-step--current svg path:last-of-type {
+  stroke-width: 0%;
+}
+.IAC--template__eventRegisterPage form#registrationWrappedForm {
+  height: calc(100dvh - 18rem);
+  /* background: red; */
+  width: calc(100dvw - 16rem);
+}
+.IAC--template__eventRegisterPage .SessionHeader {
+  background-color: var(--cds-ui-01, #ffffff);
+  position: absolute;
+  z-index: 10;
+  width: calc(100dvw - 16rem);
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list-thead {
+  position: sticky;
+  width: calc(100dvw - 20rem);
+  top: 6rem;
+  background: var(--cds-ui-01, #ffffff);
+  z-index: 10;
+}
+
+.IAC--template__eventRegisterPage .bx--structured-list-row.bx--structured-list-row--header-row.border-bottom {
+  border: none;
+  height: 1px;
+  background: var(--cds-border-subtle);
+  display: block;
+  position: absolute;
+  width: calc(100dvw - 16rem);
+  top: 2.6rem;
+}
+
+.IAC--template__eventRegisterPage form#registrationWrappedForm:not(:has(.show)) {
+  display: none;
+}
+.IAC--template__eventRegisterPage .detailsTileContainer .bx--tile {
+  background: var(--cds-ui-02);
+  margin: 0 0.5rem;
+  width: calc((100dvw - 7rem) / 4);
+  display: inline-flex;
+  vertical-align: top;
+}
+.IAC--template__eventRegisterPage .bx--tile>h1 {
+  position: absolute;
+  left: -3rem;
+}
+.IAC--template__eventRegisterPage .circle-loader {
+  margin: 0 0 30px 10px;
+  border: 8px solid rgba(0, 0, 0, 0);
+  border-left-color: var(--cds-interactive-01);
+  border-top-color: var(--cds-interactive-01);
+  border-bottom-color: var(--cds-interactive-01);
+  animation-name: loader-spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: content-box;
+}
+.IAC--template__eventRegisterPage .circle-loader,
+.IAC--template__eventRegisterPage .circle-loader:after {
+  border-radius: 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+}
+.IAC--template__eventRegisterPage .load-complete {
+  -webkit-animation: none;
+  animation: none;
+  border-color: var(--cds-inverse-support-02);
+  transition: border 500ms ease-out;
+}
+.IAC--template__eventRegisterPage .load-complete .checkmark:after {
+  opacity: 1;
+  height: 2.75rem;
+  width: 1.375rem;
+  transform-origin: left top;
+  border-right: 8px solid var(--cds-inverse-support-02);
+  border-top: 8px solid var(--cds-inverse-support-02);
+  content: "";
+  left: 0.9rem;
+  top: 2.75rem;
+  position: absolute;
+  animation-duration: 1.2s;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  transform: scaleX(-1) rotate(135deg);
+}
+.IAC--template__eventRegisterPage .load-complete .checkmark {
+  display: block;
+}
+.IAC--template__eventRegisterPage .load-error {
+  -webkit-animation: none;
+  animation: none;
+  border-color: var(--cds-inverse-support-01);
+  transition: border 500ms ease-out;
+}
+.IAC--template__eventRegisterPage .load-error .checkmark {
+  position: absolute;
+  left: 2.5rem;
+  top: 1.375rem;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.IAC--template__eventRegisterPage .load-error .checkmark:before, .IAC--template__eventRegisterPage .load-error .checkmark:after {
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-name: error;
+  position: absolute;
+  content: " ";
+  height: 2.75rem;
+  width: 8px;
+  background-color: var(--cds-inverse-support-01);
+}
+.IAC--template__eventRegisterPage .load-error .checkmark:before {
+  transform: rotate(45deg);
+}
+.IAC--template__eventRegisterPage .load-error .checkmark:after {
+  transform: rotate(-45deg);
+}
+.IAC--template__eventRegisterPage .load-error .checkmark {
+  display: block;
+}
+.IAC--template__eventRegisterPage .checkmark {
+  display: none;
+  box-sizing: content-box;
+}
+.IAC--template__eventRegisterPage .disabledToggle {
+  float: right;
+}
+
+#registrationWrappedForm.hideIneligible .disabledSelection {
+  display: none;
+}
+#registrationWrappedForm:not(.hideIneligible) .disabledSelection {
+  display: table-row;
+}
+
+#registrationWrappedForm.hideIneligible .bx--structured-list-row:has(input[type="radio"]:disabled) {
+  display: none;
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+  20% {
+    height: 0;
+    width: 1.375rem;
+    opacity: 1;
+  }
+  40% {
+    height: 2.75rem;
+    width: 1.375rem;
+    opacity: 1;
+  }
+  100% {
+    height: 2.75rem;
+    width: 1.375rem;
+    opacity: 1;
+  }
+}
+@keyframes error {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 2.75rem;
+  }
+}
+@media (max-width: 66rem) {
+  .IAC--template__eventRegisterPage form#registrationWrappedForm {
+       height: calc(100dvh - 20rem);
+       width: calc(100dvw - 4rem);
+   }   
+   .IAC--template__eventRegisterPage .SessionHeader, .IAC--template__eventRegisterPage .bx--structured-list-row.bx--structured-list-row--header-row.border-bottom {
+    width: calc(100dvw - 4rem)
+   }
+   .IAC--template__eventRegisterPage #titleName {
+      display: none;
+  }
+
+  .IAC--template__eventRegisterPage #mobileTitle {
+      display: block;
+  }
+
+  .IAC--template__eventRegisterPage .inlineSwitcher {
+      margin-top: .25rem;
+      width: unset;
+      float: unset;
+  }
+
+  .IAC--template__eventRegisterPage .bx--content:has(.top > #mobileEventName)~.secondLevelContainer {
+      margin-left: 0;
+      height: calc(100dvh - 12.65624rem);
+      margin-top: 12.65624rem;
+      min-height: unset;
+      width: 100dvw;
+  }
+
+  .IAC--template__eventRegisterPage .bottomNavigatorButtons {
+      width: calc(100dvw - 4rem);
+      background-color: var(--cds-ui-01);
+      padding-top: .5rem;
+  }
+
+  .IAC--template__eventRegisterPage .leftBar {
+      position: fixed;
+      left: -12rem;
+      z-index: 12;
+      transition: left .5s cubic-bezier(0.2, 0.2, 0.38, 0.9);
+      overflow: visible;
+      height: calc(100dvh - 12.65624rem);
+  }
+
+  .IAC--template__eventRegisterPage .leftBar.showMobile {
+      left: 0;
+  }
+
+  .IAC--template__eventRegisterPage .leftBar.showMobile~.secondLevelContainer {
+      opacity: 50;
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile {
+      margin: .5rem 0;
+      width: unset;
+      display: block;
+  }
+  .IAC--template__eventRegisterPage .bx--tile {
+      width: calc(100dvw - 7rem);
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile:nth-child(4n+1) {
+      margin-left: unset;
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile:nth-child(4n) {
+      margin-right: unset;
+  }
+
+  .IAC--template__eventRegisterPage .detailsTileContainer {
+      display: block;
+      /* overflow-y: auto; */
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile>h2 {
+      border-right: none;
+      padding-right: unset;
+      margin-right: .25rem;
+      max-width: unset;
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile>p {
+      margin-left: unset;
+      text-align: unset;
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile:nth-child(4n+1) {
+      margin-top: 1rem;
+  }
+
+  .IAC--template__eventRegisterPage .bx--tile.detailTile:nth-child(4n) {
+      margin-bottom: 0;
+  }
+  .IAC--template__eventRegisterPage .SessionContents {
+      height: calc(100dvh - 20rem);
+      overflow: auto;
+      width: calc(100dvw - 4rem);
+  }
+  .IAC--template__eventRegisterPage .leftBar .mobileExpand{
+      background-color: var(--cds-ui-02);
+      width: 2rem;
+      height: 2rem;
+      content: 'test';
+      position: absolute;
+      top: 0;
+      left: 12rem;
+      display: block;
+      /* position: fixed; */
+  }
+  .IAC--template__eventRegisterPage .leftBar .mobileExpand svg{
+      position: relative;
+      top: 5px;
+      left: 5px;
+      transition: transform .25s cubic-bezier(0.2, 0.2, 0.38, 0.9);
+  }
+  .IAC--template__eventRegisterPage .leftBar .mobileExpand svg polygon{
+      fill: var(--cds-text-01);
+  }
+  .IAC--template__eventRegisterPage .leftBar.showMobile .mobileExpand svg {
+      transform: rotate(180deg);
+  }
+}
 /* #endregion */

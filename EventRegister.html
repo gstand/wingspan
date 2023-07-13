@@ -28,16 +28,16 @@
     <link rel="stylesheet" href="common/common.css">
     <script src="common/carbon.js"></script>
     <script src="common/common.js"></script>
-    <link rel="stylesheet" href="assets/eventRegister/eventRegister.css">
-    <script type="module" src="assets/eventRegister/eventRegister.js"></script>
+    <script type="module" src="controllers/eventRegister.js"></script>
 </head>
 
-<body class="bx--body">
+<body class="bx--body IAC--template__eventRegisterPage">
     <common-header></common-header>
     <div class="bx--content">
         <div class="top">
             <h1 id="titleName">Event Registration - </h1>
             <h1 id="mobileTitle">Event Registration</h1>
+            <h2 id="mobileEventName">lorem</h2>
         </div>
     </div>
     <div class="leftBar">
@@ -120,12 +120,14 @@
                 </div>
             </div>
         </div>
-        <form action="scripts/php/process/events.php?type=event&action=register&event_id=12" method="post" name="Event_Register" id="registrationWrappedForm">
+        <form name="Event_Register" id="registrationWrappedForm" onsubmit="EventRegister__handleSubmit(event)" class="hideIneligible">
         <input type="hidden" name="Sessions" id="sessionInvis">
         </form>
         <div id="summaryPage" class="SessionContents">
-            <h2>Summary</h2>
-            <h4>Click a session to modify your selection.</h4>
+            <div class="SessionHeader">
+                <h2>Summary</h2>
+                <h4>Click a session to modify your selection.</h4>
+            </div>
             <div id="tileSurface"></div>
         </div>
         <div class="bottomNavigatorButtons">
