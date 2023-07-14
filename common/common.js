@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.prepend(progressBar);
 });
 
-window.addEventListener("beforeunload",() => {
+window.addEventListener("beforeunload", () => {
     const progressBar = document.createElement('div');
     progressBar.className = 'progress-bar';
     progressBar.id = 'progress-bar';
@@ -251,6 +251,39 @@ const getUserSession = async () => {
 }
 globalThis.getUserSession = getUserSession;
 
+const verifyToOldUI = (url) => {
+    const modalHTML = `<div data-modal id="modal-oldURLConfirm" class="bx--modal " role="dialog"
+    aria-modal="true" aria-labelledby="modal-oldURLConfirm-label" aria-describedby="modal-oldURLConfirm-heading" tabindex="-1">
+    <div class="bx--modal-container bx--modal-container--xs">
+      <div class="bx--modal-header">
+        <p class="bx--modal-header__label bx--type-delta" id="modal-oldURLConfirm-label">Warning</p>
+        <p class="bx--modal-header__heading bx--type-beta" id="modal-oldURLConfirm-heading">Unmigrated Page</p>
+        <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal" >
+          <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z"></path></svg>
+        </button>
+      </div>
+  
+      <div class="bx--modal-content" >
+        <p>The URL you selected has not been migrated to the new Wingspan layout by the development team yet. If you decide to continue, you will be taken to the page's equivalent in the old UI style. To return to Wingspan, just use your browser/app's back button/gesture, or close the app/tab and reopen it again.</p>
+  
+            </div>
+      <div class="bx--modal-content--overflow-indicator"></div>
+  
+      <div class="bx--modal-footer">
+        <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Close</button>
+        <button class="bx--btn bx--btn--primary" type="button"   data-modal-primary-focus id="continueToOld">Continue</button>
+      </div>
+    </div>
+    <span tabindex="0"></span>
+  </div>`
+    const modal = new DOMParser().parseFromString(modalHTML, 'text/html').body.firstChild;
+    modal.querySelector('#continueToOld').addEventListener('click', () => { window.location.href = url })
+    document.body.appendChild(modal);
+    const modalObject = CarbonComponents.Modal.create(document.getElementById('modal-oldURLConfirm'));
+    modalObject.show();
+}
+globalThis.verifyToOldUI = verifyToOldUI;
+
 document.addEventListener('contextProvided', () => {
     if (context.userSession) {
         if (document.getElementById('commonHeader')) {
@@ -297,270 +330,241 @@ class CommonHeader extends HTMLElement {
         if (theme) {
             document.querySelector('html').setAttribute('theme', theme);
         }
-        this.innerHTML = `
-<header class="bx--header" role="banner" aria-label="Innovation Academy Events" data-header id="commonHeader">
-    <a class="bx--skip-to-content" href="#bx--content" tabindex="0">Skip to main content</a>
-    <button class="bx--header__menu-trigger bx--header__action IAE--topnavMenu" aria-label="Open menu"
-        title="Open menu"
-        data-navigation-menu-panel-label-expand="Open menu" data-navigation-menu-panel-label-collapse="Close menu"
-        data-navigation-menu-target="#navigation-menu-left">
-        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-collapse-icon"
-            width="20" height="20" viewBox="0 0 32 32">
-            <path
-                d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z">
-            </path>
-        </svg>
-        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-expand-icon"
-            width="20" height="20" viewBox="0 0 20 20">
-            <path d="M2 14.8H18V16H2zM2 11.2H18V12.399999999999999H2zM2 7.6H18V8.799999999999999H2zM2 4H18V5.2H2z">
-            </path>
-        </svg>
-    </button>
-    <a class="bx--header__name" href="index.html" title="">
-        <span class="bx--header__name--prefix">
-            Innovation Academy
-            &nbsp;
-        </span>
-        [Events]
-    </a>
-    <nav class="bx--header__nav" aria-label="IA Events" data-header-nav>
-        <ul class="bx--header__menu-bar" aria-label="IA Events">
-            <li>
-                <a class="bx--header__menu-item" href="EventPass.html" tabindex="0">
-                    Your schedule
-                </a>
-            </li>
-            <li>
-                <a class="bx--header__menu-item" href="EventRegister.html" tabindex="0">
-                    Register
-                </a>
-            </li>
-            <li class="bx--header__submenu" data-header-submenu id="teacherMenuHeader">
-                <a class="bx--header__menu-item bx--header__menu-title" aria-haspopup="true"
-                    href="javascript:void(0)" tabindex="0">
-                    Teacher
-                    <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-                        <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-                    </svg>
-                </a>
-                <ul class="bx--header__menu" aria-label="L1 link 3">
-                    <li role="none">
-                        <a class="bx--header__menu-item" href="EventOwner.html" tabindex="-1">
-                            <span class="bx--text-truncate--end">
-                                Your events
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="bx--header__submenu" data-header-submenu id="adminMenuHeader">
-                <a class="bx--header__menu-item bx--header__menu-title" aria-haspopup="true"
-                    aria-expanded="false" href="javascript:void(0)" tabindex="0">
-                    Admin
-                    <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-                        <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-                    </svg>
-                </a>
-                <ul class="bx--header__menu" aria-label="L1 link 4">
-                    <li role="none">
-                        <a class="bx--header__menu-item" href="EventList.html" tabindex="-1">
-                            <span class="bx--text-truncate--end">
-                                Event List
-                            </span>
-                        </a>
-                    </li>
-                    <li role="none">
-                        <a class="bx--header__menu-item" href="javascript:void(0)" tabindex="-1">
-                            <span class="bx--text-truncate--end">
-                                See User
-                            </span>
-                        </a>
-                    </li>
-                    <li role="none">
-                        <a class="bx--header__menu-item" href="javascript:void(0)" tabindex="-1">
-                            <span class="bx--text-truncate--end">
-                                Add Users
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div class="bx--header__global">
-        <button class="bx--header__menu-trigger bx--header__action" aria-label="User Menu"
-            title="User Menu" data-navigation-menu-panel-label-expand="User Menu"
-            data-navigation-menu-panel-label-collapse="Close menu"
-            data-product-switcher-target="#switcher-user">
+        this.innerHTML = `<header class="bx--header" role="banner" aria-label="Innovation Academy Events" data-header id="commonHeader">
+        <a class="bx--skip-to-content" href="#bx--content" tabindex="0">Skip to main content</a>
+        <button class="bx--header__menu-trigger bx--header__action IAE--topnavMenu" aria-label="Open menu"
+            title="Open menu"
+            data-navigation-menu-panel-label-expand="Open menu" data-navigation-menu-panel-label-collapse="Close menu"
+            data-navigation-menu-target="#navigation-menu-left">
             <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-expand-icon"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-collapse-icon"
                 width="20" height="20" viewBox="0 0 32 32">
-                <defs>
-                    <style>
-                        .cls-1 {
-                            fill: none;
-                        }
-                    </style>
-                </defs>
-                <path id="_inner-path_" data-name="&lt;inner-path&gt;" class="cls-1"
-                    d="M8.0071,24.93A4.9958,4.9958,0,0,1,13,20h6a4.9959,4.9959,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0ZM20.5,12.5A4.5,4.5,0,1,1,16,8,4.5,4.5,0,0,1,20.5,12.5Z" />
-                <path
-                    d="M26.7489,24.93A13.9893,13.9893,0,1,0,2,16a13.899,13.899,0,0,0,3.2511,8.93l-.02.0166c.07.0845.15.1567.2222.2392.09.1036.1864.2.28.3008.28.3033.5674.5952.87.87.0915.0831.1864.1612.28.2417.32.2759.6484.5372.99.7813.0441.0312.0832.0693.1276.1006v-.0127a13.9011,13.9011,0,0,0,16,0V27.48c.0444-.0313.0835-.0694.1276-.1006.3412-.2441.67-.5054.99-.7813.0936-.08.1885-.1586.28-.2417.3025-.2749.59-.5668.87-.87.0933-.1006.1894-.1972.28-.3008.0719-.0825.1522-.1547.2222-.2392ZM16,8a4.5,4.5,0,1,1-4.5,4.5A4.5,4.5,0,0,1,16,8ZM8.0071,24.93A4.9957,4.9957,0,0,1,13,20h6a4.9958,4.9958,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0Z" />
-                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                    width="32" height="32" />
-            </svg>
-            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                class="bx--navigation-menu-panel-collapse-icon" width="20" height="20" viewBox="0 0 32 32">
                 <path
                     d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z">
                 </path>
             </svg>
-        </button>
-    </div>
-</header>
-<div class="bx--navigation" id="navigation-menu-left" hidden data-navigation-menu>
-    <!--!!!MAKE SURE THIS LINES UP WITH .bx--header__menu-bar!!!-->
-    <div class="bx--navigation-section">
-        <ul class="bx--navigation-items">
-            <li class="bx--navigation-item bx--navigation-item--icon">
-                <a class="bx--navigation-link" href="javascript:void(0)">
-                    <div class="bx--navigation-icon">
-                    <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    width="20" height="20" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-               <path d="M26,4h-4V2h-2v2h-8V2h-2v2H6C4.9,4,4,4.9,4,6v20c0,1.1,0.9,2,2,2h20c1.1,0,2-0.9,2-2V6C28,4.9,27.1,4,26,4z M26,26H6V12h20 V26z M26,10H6V6h4v2h2V6h8v2h2V6h4V10z" style="fill: white;"/>
-               </svg>               
-                    </div>
-                    Your schedule
-                </a>
-            </li>
-            <li class="bx--navigation-item bx--navigation-item--icon">
-                <a class="bx--navigation-link" href="javascript:void(0)">
-                    <div class="bx--navigation-icon">
-                    <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" width="20" height="20">
-                    <polygon points="30,22 24,22 24,16 22,16 22,22 16,22 16,24 22,24 22,30 24,30 24,24 30,24 		" style="fill: white;"/>
-                    <path d="M28,6c0-1.1-0.9-2-2-2h-4V2h-2v2h-8V2h-2v2H6C4.9,4,4,4.9,4,6v20c0,1.1,0.9,2,2,2h8v-2H6V6h4v2h2V6h8v2h2V6h4v8h2V6z" style="fill: white;"/>
-                </svg>
-                    </div>
-                    Register
-                </a>
-            </li>
-            <li class="bx--navigation-item bx--navigation-item--icon" id="teacherMenuSide">
-                <div class="bx--navigation__category">
-                    <button class="bx--navigation__category-toggle" aria-haspopup="true" aria-expanded="false"
-                        aria-controls="category-1-menu">
-                        <div class="bx--navigation-icon">
-                        <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
-                        <path d="M16,22a4,4,0,1,0-4-4A4,4,0,0,0,16,22Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,16,16Z" style="fill: white;"/>
-                        <rect x="14" y="6" width="4" height="2" style="fill: white;"/>
-                        <path
-                            d="M24,2H8A2.002,2.002,0,0,0,6,4V28a2.0023,2.0023,0,0,0,2,2H24a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,24,2ZM20,28H12V26a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Zm2,0V26a3,3,0,0,0-3-3H13a3,3,0,0,0-3,3v2H8V4H24V28Z" style="fill: white;"/>
-                    </svg>
-                        </div>
-                        <div class="bx--navigation__category-title">
-                            Teacher
-                            <svg aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32">
-                                <path d="M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12 16 22z" />
-                            </svg>
-                        </div>
-                    </button>
-                    <ul id="category-1-menu" class="bx--navigation__category-items">
-                        <li class="bx--navigation__category-item">
-                            <a class="bx--navigation-link" href="javascript:void(0)">
-                                Your events
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="bx--navigation-item bx--navigation-item--icon" id="adminMenuSide">
-                <div class="bx--navigation__category">
-                    <button class="bx--navigation__category-toggle" aria-haspopup="true" aria-expanded="false"
-                        aria-controls="category-1-menu">
-                        <div class="bx--navigation-icon">
-                        <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
-                        <path d="M16,22a4,4,0,1,0-4-4A4,4,0,0,0,16,22Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,16,16Z" style="fill: white;"/>
-                        <rect x="14" y="6" width="4" height="2" style="fill: white;"/>
-                        <path
-                            d="M24,2H8A2.002,2.002,0,0,0,6,4V28a2.0023,2.0023,0,0,0,2,2H24a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,24,2ZM20,28H12V26a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Zm2,0V26a3,3,0,0,0-3-3H13a3,3,0,0,0-3,3v2H8V4H24V28Z" style="fill: white;"/>
-                    </svg>
-                        </div>
-                        <div class="bx--navigation__category-title">
-                            Admin
-                            <svg aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32">
-                                <path d="M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12 16 22z" />
-                            </svg>
-                        </div>
-                    </button>
-                    <ul id="category-1-menu" class="bx--navigation__category-items">
-                        <li class="bx--navigation__category-item">
-                            <a class="bx--navigation-link" href="javascript:void(0)">
-                                Event List
-                            </a>
-                        </li>
-                        <li
-                            class="bx--navigation__category-item">
-                            <a class="bx--navigation-link" href="javascript:void(0)">
-                                See User
-                            </a>
-                        </li>
-                        <li class="bx--navigation__category-item">
-                            <a class="bx--navigation-link" href="javascript:void(0)">
-                                Add Users
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<aside class="bx--panel--overlay" id="switcher-user" data-product-switcher>
-    <div class="bx--product-switcher user-container">
-        <h5>
-            <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="16"
-                height="16" viewBox="0 0 32 32" style="fill:white;position: relative;top: 2px;">
-                <defs>
-                    <style>
-                        .cls-1 {
-                            fill: none;
-                        }
-                    </style>
-                </defs>
-                <path id="_inner-path_" data-name="&lt;inner-path&gt;" class="cls-1"
-                    d="M8.0071,24.93A4.9958,4.9958,0,0,1,13,20h6a4.9959,4.9959,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0ZM20.5,12.5A4.5,4.5,0,1,1,16,8,4.5,4.5,0,0,1,20.5,12.5Z" />
-                <path
-                    d="M26.7489,24.93A13.9893,13.9893,0,1,0,2,16a13.899,13.899,0,0,0,3.2511,8.93l-.02.0166c.07.0845.15.1567.2222.2392.09.1036.1864.2.28.3008.28.3033.5674.5952.87.87.0915.0831.1864.1612.28.2417.32.2759.6484.5372.99.7813.0441.0312.0832.0693.1276.1006v-.0127a13.9011,13.9011,0,0,0,16,0V27.48c.0444-.0313.0835-.0694.1276-.1006.3412-.2441.67-.5054.99-.7813.0936-.08.1885-.1586.28-.2417.3025-.2749.59-.5668.87-.87.0933-.1006.1894-.1972.28-.3008.0719-.0825.1522-.1547.2222-.2392ZM16,8a4.5,4.5,0,1,1-4.5,4.5A4.5,4.5,0,0,1,16,8ZM8.0071,24.93A4.9957,4.9957,0,0,1,13,20h6a4.9958,4.9958,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0Z" />
-                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                    width="32" height="32" />
+            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-expand-icon"
+                width="20" height="20" viewBox="0 0 20 20">
+                <path d="M2 14.8H18V16H2zM2 11.2H18V12.399999999999999H2zM2 7.6H18V8.799999999999999H2zM2 4H18V5.2H2z">
+                </path>
             </svg>
-            User Information
-        </h5>
-        <p>You are signed in as:</p>
-        <p id="UserInformaton"></p>
-        <p>Role: <strong id="UserRole"></strong></p>
-        <p hidden>IP: <strong id="UserIP"></strong></p>
-        <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'Login.html?action=logout&redirect=${encodeURIComponent(window.location.href.replace(window.location.origin, ''))}'">
-            Log out
         </button>
-        <div class="bottomControls">
-            <div class="bx--form-item">
-                <input class="bx--toggle-input bx--toggle-input--small" id="appearanceToggle" type="checkbox" ${document.querySelector(':root').getAttribute('theme') == 'g100' ? 'checked' : ''}>
-                <label class="bx--toggle-input__label" for="appearanceToggle">
-                    Appearance
-                    <span class="bx--toggle__switch">
-                        <span class="bx--toggle__text--off" aria-hidden="true">Light</span>
-                        <span class="bx--toggle__text--on" aria-hidden="true">Dark</span>
-                    </span>
-                </label>
-            </div>
+        <a class="bx--header__name" href="index.html" title="">
+            <span class="bx--header__name--prefix">
+                Innovation Academy
+                &nbsp;
+            </span>
+            [Events]
+        </a>
+        <nav class="bx--header__nav" aria-label="IA Events" data-header-nav>
+            <ul class="bx--header__menu-bar" aria-label="IA Events">
+                <li>
+                    <a class="bx--header__menu-item" href="EventList.html?type=open" tabindex="0">
+                        Open events
+                    </a>
+                </li>
+                <li class="bx--header__submenu" data-header-submenu id="teacherMenuHeader">
+                    <a class="bx--header__menu-item bx--header__menu-title" aria-haspopup="true"
+                        href="javascript:void(0)" tabindex="0">
+                        Teacher
+                        <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+                            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+                        </svg>
+                    </a>
+                    <ul class="bx--header__menu" aria-label="L1 link 3">
+                        <li role="none">
+                            <a class="bx--header__menu-item" href="EventList.html" tabindex="-1"> <!--TODO: what relevance does EventOwner have?-->
+                                <span class="bx--text-truncate--end">
+                                    All events
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="bx--header__submenu" data-header-submenu id="adminMenuHeader">
+                    <a class="bx--header__menu-item bx--header__menu-title" aria-haspopup="true"
+                        aria-expanded="false" href="javascript:void(0)" tabindex="0">
+                        Admin
+                        <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+                            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+                        </svg>
+                    </a>
+                    <ul class="bx--header__menu" aria-label="L1 link 4">
+                        <li role="none">
+                            <a class="bx--header__menu-item" onclick="verifyToOldUI('/users.php')" tabindex="-1">
+                                <span class="bx--text-truncate--end">
+                                    All users
+                                </span>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a class="bx--header__menu-item" onclick="verifyToOldUI('/user.php?action=add')" tabindex="-1">
+                                <span class="bx--text-truncate--end">
+                                    Add user
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="bx--header__global">
+            <button class="bx--header__menu-trigger bx--header__action" aria-label="User Menu"
+                title="User Menu" data-navigation-menu-panel-label-expand="User Menu"
+                data-navigation-menu-panel-label-collapse="Close menu"
+                data-product-switcher-target="#switcher-user">
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="bx--navigation-menu-panel-expand-icon"
+                    width="20" height="20" viewBox="0 0 32 32">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                            }
+                        </style>
+                    </defs>
+                    <path id="_inner-path_" data-name="&lt;inner-path&gt;" class="cls-1"
+                        d="M8.0071,24.93A4.9958,4.9958,0,0,1,13,20h6a4.9959,4.9959,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0ZM20.5,12.5A4.5,4.5,0,1,1,16,8,4.5,4.5,0,0,1,20.5,12.5Z" />
+                    <path
+                        d="M26.7489,24.93A13.9893,13.9893,0,1,0,2,16a13.899,13.899,0,0,0,3.2511,8.93l-.02.0166c.07.0845.15.1567.2222.2392.09.1036.1864.2.28.3008.28.3033.5674.5952.87.87.0915.0831.1864.1612.28.2417.32.2759.6484.5372.99.7813.0441.0312.0832.0693.1276.1006v-.0127a13.9011,13.9011,0,0,0,16,0V27.48c.0444-.0313.0835-.0694.1276-.1006.3412-.2441.67-.5054.99-.7813.0936-.08.1885-.1586.28-.2417.3025-.2749.59-.5668.87-.87.0933-.1006.1894-.1972.28-.3008.0719-.0825.1522-.1547.2222-.2392ZM16,8a4.5,4.5,0,1,1-4.5,4.5A4.5,4.5,0,0,1,16,8ZM8.0071,24.93A4.9957,4.9957,0,0,1,13,20h6a4.9958,4.9958,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0Z" />
+                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
+                        width="32" height="32" />
+                </svg>
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                    class="bx--navigation-menu-panel-collapse-icon" width="20" height="20" viewBox="0 0 32 32">
+                    <path
+                        d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4 14.6 16 8 22.6 9.4 24 16 17.4 22.6 24 24 22.6 17.4 16 24 9.4z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <div class="bx--navigation" id="navigation-menu-left" hidden data-navigation-menu>
+        <!--!!!MAKE SURE THIS LINES UP WITH .bx--header__menu-bar!!!-->
+        <div class="bx--navigation-section">
+            <ul class="bx--navigation-items">
+                <li class="bx--navigation-item bx--navigation-item--icon">
+                    <a class="bx--navigation-link" href="EventList.html?type=open">
+                        <div class="bx--navigation-icon">
+                        <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="20" height="20" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                   <path d="M26,4h-4V2h-2v2h-8V2h-2v2H6C4.9,4,4,4.9,4,6v20c0,1.1,0.9,2,2,2h20c1.1,0,2-0.9,2-2V6C28,4.9,27.1,4,26,4z M26,26H6V12h20 V26z M26,10H6V6h4v2h2V6h8v2h2V6h4V10z" style="fill: white;"/>
+                   </svg>               
+                        </div>
+                        Open events
+                    </a>
+                </li>
+                <li class="bx--navigation-item bx--navigation-item--icon" id="teacherMenuSide">
+                    <div class="bx--navigation__category">
+                        <button class="bx--navigation__category-toggle" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="category-1-menu">
+                            <div class="bx--navigation-icon">
+                            <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                            <path d="M16,22a4,4,0,1,0-4-4A4,4,0,0,0,16,22Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,16,16Z" style="fill: white;"/>
+                            <rect x="14" y="6" width="4" height="2" style="fill: white;"/>
+                            <path
+                                d="M24,2H8A2.002,2.002,0,0,0,6,4V28a2.0023,2.0023,0,0,0,2,2H24a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,24,2ZM20,28H12V26a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Zm2,0V26a3,3,0,0,0-3-3H13a3,3,0,0,0-3,3v2H8V4H24V28Z" style="fill: white;"/>
+                        </svg>
+                            </div>
+                            <div class="bx--navigation__category-title">
+                                Teacher
+                                <svg aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 32 32">
+                                    <path d="M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12 16 22z" />
+                                </svg>
+                            </div>
+                        </button>
+                        <ul id="category-1-menu" class="bx--navigation__category-items">
+                            <li class="bx--navigation__category-item">
+                                <a class="bx--navigation-link" href="EventList.html">
+                                    All events
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bx--navigation-item bx--navigation-item--icon" id="adminMenuSide">
+                    <div class="bx--navigation__category">
+                        <button class="bx--navigation__category-toggle" aria-haspopup="true" aria-expanded="false"
+                            aria-controls="category-1-menu">
+                            <div class="bx--navigation-icon">
+                            <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                            <path d="M16,22a4,4,0,1,0-4-4A4,4,0,0,0,16,22Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,16,16Z" style="fill: white;"/>
+                            <rect x="14" y="6" width="4" height="2" style="fill: white;"/>
+                            <path
+                                d="M24,2H8A2.002,2.002,0,0,0,6,4V28a2.0023,2.0023,0,0,0,2,2H24a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,24,2ZM20,28H12V26a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Zm2,0V26a3,3,0,0,0-3-3H13a3,3,0,0,0-3,3v2H8V4H24V28Z" style="fill: white;"/>
+                        </svg>
+                            </div>
+                            <div class="bx--navigation__category-title">
+                                Admin
+                                <svg aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 32 32">
+                                    <path d="M16 22L6 12l1.414-1.414L16 19.172l8.586-8.586L26 12 16 22z" />
+                                </svg>
+                            </div>
+                        </button>
+                        <ul id="category-1-menu" class="bx--navigation__category-items">
+                            <li
+                                class="bx--navigation__category-item">
+                                <a class="bx--navigation-link" onclick="verifyToOldUI('/users.php')">
+                                    All users
+                                </a>
+                            </li>
+                            <li class="bx--navigation__category-item">
+                                <a class="bx--navigation-link" onclick="verifyToOldUI('/user.php?action=add')">
+                                    Add user
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-</aside>`
+    <aside class="bx--panel--overlay" id="switcher-user" data-product-switcher>
+        <div class="bx--product-switcher user-container">
+            <h5>
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="16"
+                    height="16" viewBox="0 0 32 32" style="fill:white;position: relative;top: 2px;">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                            }
+                        </style>
+                    </defs>
+                    <path id="_inner-path_" data-name="&lt;inner-path&gt;" class="cls-1"
+                        d="M8.0071,24.93A4.9958,4.9958,0,0,1,13,20h6a4.9959,4.9959,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0ZM20.5,12.5A4.5,4.5,0,1,1,16,8,4.5,4.5,0,0,1,20.5,12.5Z" />
+                    <path
+                        d="M26.7489,24.93A13.9893,13.9893,0,1,0,2,16a13.899,13.899,0,0,0,3.2511,8.93l-.02.0166c.07.0845.15.1567.2222.2392.09.1036.1864.2.28.3008.28.3033.5674.5952.87.87.0915.0831.1864.1612.28.2417.32.2759.6484.5372.99.7813.0441.0312.0832.0693.1276.1006v-.0127a13.9011,13.9011,0,0,0,16,0V27.48c.0444-.0313.0835-.0694.1276-.1006.3412-.2441.67-.5054.99-.7813.0936-.08.1885-.1586.28-.2417.3025-.2749.59-.5668.87-.87.0933-.1006.1894-.1972.28-.3008.0719-.0825.1522-.1547.2222-.2392ZM16,8a4.5,4.5,0,1,1-4.5,4.5A4.5,4.5,0,0,1,16,8ZM8.0071,24.93A4.9957,4.9957,0,0,1,13,20h6a4.9958,4.9958,0,0,1,4.9929,4.93,11.94,11.94,0,0,1-15.9858,0Z" />
+                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
+                        width="32" height="32" />
+                </svg>
+                User Information
+            </h5>
+            <p>You are signed in as:</p>
+            <p id="UserInformaton"></p>
+            <p>Role: <strong id="UserRole"></strong></p>
+            <p hidden>IP: <strong id="UserIP"></strong></p>
+            <button aria-label="Log out" tabindex="0" class="bx--btn--secondary" onclick="window.location.href = 'Login.html?action=logout&redirect=${encodeURIComponent(window.location.href.replace(window.location.origin, ''))}'">
+                Log out
+            </button>
+            <div class="bottomControls">
+                <div class="bx--form-item">
+                    <input class="bx--toggle-input bx--toggle-input--small" id="appearanceToggle" type="checkbox" ${document.querySelector(':root').getAttribute('theme') == 'g100' ? 'checked' : ''}>
+                    <label class="bx--toggle-input__label" for="appearanceToggle">
+                        Appearance
+                        <span class="bx--toggle__switch">
+                            <span class="bx--toggle__text--off" aria-hidden="true">Light</span>
+                            <span class="bx--toggle__text--on" aria-hidden="true">Dark</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </aside>`
         this.header = CarbonComponents.HeaderNav.init()
         this.leftNav = CarbonComponents.NavigationMenu.init()
         this.userSwitcher = CarbonComponents.ProductSwitcher.init()
@@ -586,10 +590,82 @@ class ContextTag extends HTMLElement {
     connectedCallback() {
         this.style.display = 'none';
         const contextObject = JSON.parse(this.innerHTML.replace('\\', ''));
-        // document.addEventListener('contextProvided', () => {
-        //     console.log('All event listeners should be done')
-        // });
         loadContext(contextObject);
     }
 }
 window.addEventListener('load', () => { customElements.define('page-context', ContextTag) });
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    if (getCookie('installPrompt') != 'true') {
+        const notifHTML = `<div data-notification="" class="bx--inline-notification bx--inline-notification--info pwaNotif" role="alert">
+        <div class="bx--inline-notification__details">
+            <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20"
+                viewBox="0 0 32 32" aria-hidden="true">
+                <path
+                    d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,7Zm4,17.12H12V21.88h2.88V15.12H13V12.88h4.13v9H20Z">
+                </path>
+            </svg>
+            <div class="bx--inline-notification__text-wrapper">
+                <p class="bx--inline-notification__title">Did you know?</p>
+                <p class="bx--inline-notification__subtitle">IA Events now has a mobile app!</p>
+            </div>
+        </div>
+        <div class="pwaButtons">
+            <button tabindex="0" class="bx--inline-notification__action-button bx--btn bx--btn--sm bx--btn--ghost" type="button" id="PWA_StartOnboarding">Find out how to install</button>
+            <button tabindex="0" class="bx--inline-notification__action-button bx--btn bx--btn--sm bx--btn--ghost" type="button" id="PWA_DismissSession">Dismiss until next time</button>
+            <button tabindex="0" class="bx--inline-notification__action-button bx--btn bx--btn--sm bx--btn--ghost" type="button" id="PWA_Dismiss">Don't ask me again</button>
+        </div>
+    </div>`
+        const notif = new DOMParser().parseFromString(notifHTML, 'text/html').body.firstChild;
+        notif.querySelector('#PWA_StartOnboarding').addEventListener('click', () => {
+            notif.remove();
+            document.cookie = 'installPrompt=true;path=/;'
+            const modalHTML = `<div data-modal="" id="modal-PWAOnboarding" class="bx--modal is-visible" role="dialog" aria-modal="true" aria-labelledby="modal-PWAOnboarding-label" aria-describedby="modal-PWAOnboarding-heading" tabindex="-1">
+            <div class="bx--modal-container">
+              <div class="bx--modal-header">
+                
+                <p class="bx--modal-header__heading bx--type-beta" id="modal-PWAOnboarding-heading">How to install PWA mobile app</p>
+                <button class="bx--modal-close" type="button" data-modal-close="" aria-label="close modal" data-modal-primary-focus="">
+                  <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z"></path></svg>
+                </button>
+              </div>
+          
+              
+          
+              <div class="bx--modal-content">
+                <p>For iOS: click the Share icon, click Add to Home Screen, and press Add.</p>
+          <img src="assets/SCR-20230713-rrna.png">
+          <img src="assets/SCR-20230713-rqza.png">
+          <img src="assets/SCR-20230713-rrpy.png">
+          <img src="assets/IMG_85D14D7DD8DF-1.jpeg">
+          <p>For Android (Chrome): Press the triple dots to your top right, press "Add to Home screen", and press Add.</p>
+          <img src="assets/SCR-20230713-rstl.png">
+          <img src="assets/SCR-20230713-rswk.png">
+          <img src="assets/SCR-20230713-rtad.png">
+          <img src="assets/SCR-20230713-rtvd.png">
+              <p>Can't find these menus or don't use these browsers? Just Google "how to add a PWA for" then type in your phone and/or browser. You can even install this as an app on desktop too!</p>
+                    </div>
+              <div class="bx--modal-content--overflow-indicator"></div>
+          
+            </div>
+            <!-- Note: focusable span allows for focus wrap feature within Modals -->
+            <span tabindex="0"></span>
+          </div>`
+            const modal = new DOMParser().parseFromString(modalHTML, 'text/html').body.firstChild;
+            document.body.appendChild(modal);
+            const modalObject = CarbonComponents.Modal.create(document.getElementById('modal-PWAOnboarding'));
+            modalObject.show();
+        });
+        notif.querySelector('#PWA_DismissSession').addEventListener('click', () => {
+            notif.remove();
+            document.cookie = 'installPrompt=true;path=/;'
+        });
+        notif.querySelector('#PWA_Dismiss').addEventListener('click', () => {
+            notif.remove();
+            setCookie('installPrompt', 'true', 365);
+        });
+        document.body.appendChild(notif);
+    }
+})

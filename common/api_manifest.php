@@ -1,5 +1,5 @@
 <?php
-$config = require(__DIR__ . "/../../config.php");
+$config = require(__DIR__ . "/../../../config.php");
 $api_manifest = [
     "hostname" => $config->application_domain,
     "devmode" => !$config->session_secure, // there's ought to be a better way to measure this but still

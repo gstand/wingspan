@@ -1,3 +1,4 @@
+
 window.addEventListener('load', async () => {
     await getUserSession();
     const params = new URLSearchParams(window.location.search);
@@ -53,6 +54,7 @@ document.addEventListener('contextProvided', () => {
     document.getElementById('eventRegWindow').innerHTML = eventRegTimeString;
     document.getElementById('eventRegWindow').classList.remove('bx--skeleton__text');
     document.getElementById('register').onclick = () => { window.location.href = `EventRegister.html?id=${context.myEvent.id}` }
+    // document.getElementById('search_session').addEventListener('input', searchSessions) // TODO: implement search
     if (!context.myEvent.can_admin) {
         document.getElementById('adminCol').remove();
         document.getElementById('attendee').remove();
@@ -299,7 +301,6 @@ const sortTableEvent = (event) => {
             }
             sortedTime = timeChunks.join(':');
             const sortedColumn = Date.parse(new Date(Date.parse(context.myEvent.e_date) + 14400000).toISOString().split('T')[0] + 'T' + sortedTime + '.000Z')
-            console.log(sortedColumn, sortedTime, row)
             return { row: row, expandableContent: expandableContent[index], sortedColumn: sortedColumn };
         }
         return { row: row, expandableContent: expandableContent[index], sortedColumn: row.children[event.target.parentElement.cellIndex].innerText };

@@ -85,6 +85,27 @@ table.bx--skeleton span {
   z-index: 999999999999;
 }
 
+.pwaButtons {
+  display: flex;
+      flex-direction: column;
+      margin: .5rem 0;
+}
+.pwaButtons .bx--inline-notification__action-button.bx--btn--ghost {
+  margin: 0;
+}
+
+#modal-PWAOnboarding .bx--modal-content {
+  margin-bottom: 1rem;
+}
+
+#modal-PWAOnboarding .bx--modal-content > *:last-child {
+  padding-bottom: 0;
+}
+
+#modal-PWAOnboarding .bx--modal-content > img {
+  display: block;
+}
+
 @keyframes indeterminateAnimation {
   0% {
     transform: translateX(0) scaleX(0);

@@ -49,7 +49,6 @@ globalThis.EventRegister__handleTeacherSelection = (teacherID, sessionID, page) 
 globalThis.EventRegister__updateSessionWorkshop = (workshopID, sessionID, page) => {
     const oldSelection = selections[page];
     selections[page] = context.myEvent.sessions.find((session) => session.id == sessionID).workshops.find((workshop) => workshop.id == workshopID).name
-    console.log(selections)
     if (selections[page] === 'Check Out Early') {
         for (let index = context.myEvent.sessions.length - 1; index > page; index--) {
             const session = context.myEvent.sessions[index];
@@ -460,12 +459,7 @@ const updateSummaryPage = () => {
     let checkInLateFlag = false;
     let checkOutEarlyFlag = false;
     formEntries.forEach((entry, index) => {
-        console.log(entry, index)
         if (selections[index] === 'Check In Late' && selections[index + 1] === 'Check In Late') {
-            console.log('check in late flag');
-            console.log(selections)
-            console.log(formEntries, formEntries[index], formEntries[index + 1])
-            console.log(index, selections[index], selections[index + 1])
             checkInLateFlag = true;
         } else if (selections[index] === 'Check Out Early' && selections[index - 1] === 'Check Out Early') {
             checkOutEarlyFlag = true;
@@ -836,7 +830,6 @@ document.addEventListener('contextProvided', (e) => {
     globalThis.signupProgressComponent = signupProgressComponent
     document.getElementById('pageNext').addEventListener('click', handleNext);
     document.getElementById('pagePrev').addEventListener('click', handlePrev);
-    console.log(selections)
 })
 
 const updateStep = (step, state, subtext) => {
