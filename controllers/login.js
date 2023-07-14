@@ -181,7 +181,7 @@ const login = async (e) => {
                     if (params.has('redirect')) {
                         window.location.href = params.get('redirect');
                     } else {
-                        window.location.href = login.redirectTo;
+                        window.location.href = 'index.html';
                     }
                 } else {
                     document.querySelector('#loading .bx--inline-loading__text[data-inline-loading-text-finished]').innerHTML = 'Login successful. Redirecting in ' + i + ' seconds...';
